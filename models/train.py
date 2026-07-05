@@ -472,7 +472,16 @@ def main():
 
     print("[DEBUG] Creating dataloaders...")
     os.environ["TORCH_SHARED_MEMORY_MANAGER"] = "1"
-    train_loader = DataLoader(train_ds, batch_size=args.batch_size, shuffle=True, collate_fn=multimodal_collate, num_workers=0)
+    # Weighted sampler to oversample minority classes (especially Normal)
+    class_counts = np.bincount(train_ds.labels, minlength=6)
+    class_weights = 1.0 / np.maximum(class_counts, 1)
+    # Boost Normal (class 5) and claudin-low (class 3) more
+    class_weights[5] *= 2.0  # Normal
+    class_weights[3] *= 1.5  # claudin-low
+    sample_weights = class_weights[train_ds.labels]
+    sampler = WeightedRandomSampler(sample_weights, len(sample_weights), replacement=True)
+
+    train_loader = DataLoader(train_ds, batch_size=args.batch_size, sampler=sampler, collate_fn=multimodal_collate, num_workers=0)
     val_loader = DataLoader(val_ds, batch_size=args.batch_size, shuffle=False, collate_fn=multimodal_collate, num_workers=0)
 
     # Train with per-modality latent dims matching checkpoint [64, 256, 256, 256, 128]
