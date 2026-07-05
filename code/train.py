@@ -231,7 +231,7 @@ def train(
         train_cls_losses = []
         train_surv_losses = []
 
-        for batch in train_loader:
+        for batch_idx, batch in enumerate(train_loader):
             modalities, labels, durations, events = batch
             modalities = [m.to(device) for m in modalities]
             labels = labels.to(device)
@@ -489,7 +489,8 @@ def main():
         surv_weight=args.surv_weight,
         patience=args.patience,
         ae_latent_dims=[64, 256, 256, 256, 128],
-        pathway_mask_path=args.pathway_mask_path
+        pathway_mask_path=args.pathway_mask_path,
+        gradient_accumulation_steps=args.gradient_accumulation_steps
     )
 
 
