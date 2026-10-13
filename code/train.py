@@ -141,6 +141,7 @@ def train(
     save_every=1,
     ae_latent_dims=None,
     pathway_mask_path=None,
+    gradient_accumulation_steps=1,
 ):
     print("[DEBUG] train() started, output_dir=", output_dir)
     os.makedirs(output_dir, exist_ok=True)
