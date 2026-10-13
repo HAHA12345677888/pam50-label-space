@@ -1,0 +1,401 @@
+{
+  "names": [
+    "LumA",
+    "LumB",
+    "Her2",
+    "CL",
+    "Basal",
+    "Normal"
+  ],
+  "source_prior": [
+    0.3569937369519833,
+    0.23903966597077245,
+    0.12526096033402923,
+    0.09498956158663883,
+    0.10438413361169102,
+    0.07933194154488518
+  ],
+  "n_seeds": 10,
+  "n_target": 1000,
+  "tau_abs": 0.02,
+  "tau_ratio": 0.1,
+  "rows": [
+    {
+      "axis": "single_drop",
+      "absent": [
+        "LumA"
+      ],
+      "absent_prior_mass": 0.3569937369519833,
+      "acc_base": 0.7467,
+      "acc_oracle": 0.8600000000000001,
+      "acc_detected": 0.8600000000000001,
+      "det_f1": 1.0
+    },
+    {
+      "axis": "single_drop",
+      "absent": [
+        "LumB"
+      ],
+      "absent_prior_mass": 0.23903966597077245,
+      "acc_base": 0.781,
+      "acc_oracle": 0.8850999999999999,
+      "acc_detected": 0.8850999999999999,
+      "det_f1": 0.9333333333333332
+    },
+    {
+      "axis": "single_drop",
+      "absent": [
+        "Her2"
+      ],
+      "absent_prior_mass": 0.12526096033402923,
+      "acc_base": 0.7882,
+      "acc_oracle": 0.8150999999999999,
+      "acc_detected": 0.8150999999999999,
+      "det_f1": 1.0
+    },
+    {
+      "axis": "single_drop",
+      "absent": [
+        "CL"
+      ],
+      "absent_prior_mass": 0.09498956158663883,
+      "acc_base": 0.7917,
+      "acc_oracle": 0.8090999999999999,
+      "acc_detected": 0.8091999999999999,
+      "det_f1": 0.8333333333333333
+    },
+    {
+      "axis": "single_drop",
+      "absent": [
+        "Basal"
+      ],
+      "absent_prior_mass": 0.10438413361169102,
+      "acc_base": 0.7925000000000001,
+      "acc_oracle": 0.8029999999999999,
+      "acc_detected": 0.8029999999999999,
+      "det_f1": 0.8333333333333333
+    },
+    {
+      "axis": "single_drop",
+      "absent": [
+        "Normal"
+      ],
+      "absent_prior_mass": 0.07933194154488518,
+      "acc_base": 0.7934,
+      "acc_oracle": 0.8150999999999999,
+      "acc_detected": 0.8150999999999999,
+      "det_f1": 1.0
+    },
+    {
+      "axis": "single_rare",
+      "absent": [
+        "LumA"
+      ],
+      "absent_prior_mass": 0.3569937369519833,
+      "acc_base": 0.748,
+      "acc_oracle": 0.7596999999999999,
+      "acc_detected": 0.7943,
+      "det_f1": 0.0
+    },
+    {
+      "axis": "single_rare",
+      "absent": [
+        "LumB"
+      ],
+      "absent_prior_mass": 0.23903966597077245,
+      "acc_base": 0.7816000000000001,
+      "acc_oracle": 0.8593,
+      "acc_detected": 0.8657,
+      "det_f1": 0.06666666666666667
+    },
+    {
+      "axis": "single_rare",
+      "absent": [
+        "Her2"
+      ],
+      "absent_prior_mass": 0.12526096033402923,
+      "acc_base": 0.7925000000000001,
+      "acc_oracle": 0.8253,
+      "acc_detected": 0.8253,
+      "det_f1": 0.9
+    },
+    {
+      "axis": "single_rare",
+      "absent": [
+        "CL"
+      ],
+      "absent_prior_mass": 0.09498956158663883,
+      "acc_base": 0.7822,
+      "acc_oracle": 0.7985,
+      "acc_detected": 0.7985,
+      "det_f1": 0.9666666666666666
+    },
+    {
+      "axis": "single_rare",
+      "absent": [
+        "Basal"
+      ],
+      "absent_prior_mass": 0.10438413361169102,
+      "acc_base": 0.7817000000000001,
+      "acc_oracle": 0.7988999999999999,
+      "acc_detected": 0.7989,
+      "det_f1": 0.8999999999999998
+    },
+    {
+      "axis": "single_rare",
+      "absent": [
+        "Normal"
+      ],
+      "absent_prior_mass": 0.07933194154488518,
+      "acc_base": 0.7882000000000001,
+      "acc_oracle": 0.8108000000000001,
+      "acc_detected": 0.8109999999999999,
+      "det_f1": 0.8
+    },
+    {
+      "axis": "merge",
+      "absent": [
+        "CL"
+      ],
+      "absent_prior_mass": 0.09498956158663883,
+      "acc_base": 0.7839,
+      "acc_oracle": 0.8038000000000001,
+      "acc_detected": 0.8036,
+      "det_f1": 0.8666666666666666,
+      "merged_into": "Basal",
+      "pattern": "CL->Basal"
+    },
+    {
+      "axis": "merge",
+      "absent": [
+        "LumB"
+      ],
+      "absent_prior_mass": 0.23903966597077245,
+      "acc_base": 0.7943,
+      "acc_oracle": 0.9148,
+      "acc_detected": 0.9148,
+      "det_f1": 0.7666666666666667,
+      "merged_into": "LumA",
+      "pattern": "LumB->LumA"
+    },
+    {
+      "axis": "merge",
+      "absent": [
+        "Her2"
+      ],
+      "absent_prior_mass": 0.12526096033402923,
+      "acc_base": 0.7904,
+      "acc_oracle": 0.8118000000000001,
+      "acc_detected": 0.8118000000000001,
+      "det_f1": 0.9333333333333332,
+      "merged_into": "LumB",
+      "pattern": "Her2->LumB"
+    },
+    {
+      "axis": "merge",
+      "absent": [
+        "Normal"
+      ],
+      "absent_prior_mass": 0.07933194154488518,
+      "acc_base": 0.7936,
+      "acc_oracle": 0.8204,
+      "acc_detected": 0.8204,
+      "det_f1": 1.0,
+      "merged_into": "LumA",
+      "pattern": "Normal->LumA"
+    },
+    {
+      "axis": "merge",
+      "absent": [
+        "LumA"
+      ],
+      "absent_prior_mass": 0.3569937369519833,
+      "acc_base": 0.7673,
+      "acc_oracle": 0.8982000000000001,
+      "acc_detected": 0.8982000000000001,
+      "det_f1": 1.0,
+      "merged_into": "LumB",
+      "pattern": "LumA->LumB"
+    },
+    {
+      "axis": "pair_drop",
+      "absent": [
+        "LumA",
+        "LumB"
+      ],
+      "absent_prior_mass": 0.5960334029227558,
+      "acc_base": 0.6601000000000001,
+      "acc_oracle": 0.8175000000000001,
+      "acc_detected": 0.8175000000000001,
+      "det_f1": 1.0
+    },
+    {
+      "axis": "pair_drop",
+      "absent": [
+        "LumA",
+        "Her2"
+      ],
+      "absent_prior_mass": 0.4822546972860125,
+      "acc_base": 0.7458,
+      "acc_oracle": 0.9189000000000002,
+      "acc_detected": 0.9189000000000002,
+      "det_f1": 1.0
+    },
+    {
+      "axis": "pair_drop",
+      "absent": [
+        "LumA",
+        "CL"
+      ],
+      "absent_prior_mass": 0.4519832985386221,
+      "acc_base": 0.746,
+      "acc_oracle": 0.8783,
+      "acc_detected": 0.8783,
+      "det_f1": 1.0
+    },
+    {
+      "axis": "pair_drop",
+      "absent": [
+        "LumA",
+        "Basal"
+      ],
+      "absent_prior_mass": 0.4613778705636743,
+      "acc_base": 0.7317,
+      "acc_oracle": 0.8808999999999999,
+      "acc_detected": 0.8808999999999999,
+      "det_f1": 1.0
+    },
+    {
+      "axis": "pair_drop",
+      "absent": [
+        "LumA",
+        "Normal"
+      ],
+      "absent_prior_mass": 0.43632567849686843,
+      "acc_base": 0.7547,
+      "acc_oracle": 0.8759,
+      "acc_detected": 0.8759,
+      "det_f1": 1.0
+    },
+    {
+      "axis": "pair_drop",
+      "absent": [
+        "LumB",
+        "Her2"
+      ],
+      "absent_prior_mass": 0.36430062630480164,
+      "acc_base": 0.7853000000000001,
+      "acc_oracle": 0.9235,
+      "acc_detected": 0.9235,
+      "det_f1": 1.0
+    },
+    {
+      "axis": "pair_drop",
+      "absent": [
+        "LumB",
+        "CL"
+      ],
+      "absent_prior_mass": 0.33402922755741127,
+      "acc_base": 0.7727999999999999,
+      "acc_oracle": 0.8976,
+      "acc_detected": 0.8976,
+      "det_f1": 0.9600000000000002
+    },
+    {
+      "axis": "pair_drop",
+      "absent": [
+        "LumB",
+        "Basal"
+      ],
+      "absent_prior_mass": 0.3434237995824635,
+      "acc_base": 0.7691,
+      "acc_oracle": 0.8939999999999999,
+      "acc_detected": 0.8939999999999999,
+      "det_f1": 0.9199999999999999
+    },
+    {
+      "axis": "pair_drop",
+      "absent": [
+        "LumB",
+        "Normal"
+      ],
+      "absent_prior_mass": 0.31837160751565763,
+      "acc_base": 0.7866,
+      "acc_oracle": 0.9080999999999999,
+      "acc_detected": 0.9080999999999999,
+      "det_f1": 1.0
+    },
+    {
+      "axis": "pair_drop",
+      "absent": [
+        "Her2",
+        "CL"
+      ],
+      "absent_prior_mass": 0.22025052192066807,
+      "acc_base": 0.7946,
+      "acc_oracle": 0.8351,
+      "acc_detected": 0.8351,
+      "det_f1": 0.9800000000000001
+    },
+    {
+      "axis": "pair_drop",
+      "absent": [
+        "Her2",
+        "Basal"
+      ],
+      "absent_prior_mass": 0.22964509394572025,
+      "acc_base": 0.7941,
+      "acc_oracle": 0.8257,
+      "acc_detected": 0.8257,
+      "det_f1": 0.9400000000000001
+    },
+    {
+      "axis": "pair_drop",
+      "absent": [
+        "Her2",
+        "Normal"
+      ],
+      "absent_prior_mass": 0.2045929018789144,
+      "acc_base": 0.8030000000000002,
+      "acc_oracle": 0.8423,
+      "acc_detected": 0.8423,
+      "det_f1": 1.0
+    },
+    {
+      "axis": "pair_drop",
+      "absent": [
+        "CL",
+        "Basal"
+      ],
+      "absent_prior_mass": 0.19937369519832987,
+      "acc_base": 0.7858,
+      "acc_oracle": 0.7998999999999999,
+      "acc_detected": 0.7994999999999999,
+      "det_f1": 0.8600000000000001
+    },
+    {
+      "axis": "pair_drop",
+      "absent": [
+        "CL",
+        "Normal"
+      ],
+      "absent_prior_mass": 0.174321503131524,
+      "acc_base": 0.7909999999999999,
+      "acc_oracle": 0.8206999999999999,
+      "acc_detected": 0.8206999999999999,
+      "det_f1": 1.0
+    },
+    {
+      "axis": "pair_drop",
+      "absent": [
+        "Basal",
+        "Normal"
+      ],
+      "absent_prior_mass": 0.1837160751565762,
+      "acc_base": 0.7959,
+      "acc_oracle": 0.8232000000000002,
+      "acc_detected": 0.8232000000000002,
+      "det_f1": 1.0
+    }
+  ]
+}

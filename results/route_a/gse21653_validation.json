@@ -1,0 +1,101 @@
+{
+  "cohort": "GSE21653",
+  "platform": "GPL570 (Affymetrix U133 Plus 2.0)",
+  "n": 266,
+  "n_genes_mapped": 369,
+  "n_panel_genes": 412,
+  "accuracy": 0.631578947368421,
+  "macro_f1": 0.5041523762177184,
+  "per_class": {
+    "LuminalA": {
+      "n": 89,
+      "recall": 0.7752808988764045,
+      "precision": 0.69
+    },
+    "LuminalB": {
+      "n": 49,
+      "recall": 0.6122448979591837,
+      "precision": 0.5769230769230769
+    },
+    "ERBB2": {
+      "n": 24,
+      "recall": 0.5416666666666666,
+      "precision": 0.43333333333333335
+    },
+    "Basal": {
+      "n": 75,
+      "recall": 0.6133333333333333,
+      "precision": 0.9787234042553191
+    },
+    "Normal": {
+      "n": 29,
+      "recall": 0.3448275862068966,
+      "precision": 0.7142857142857143
+    }
+  },
+  "confusion_matrix": [
+    [
+      69,
+      17,
+      3,
+      0,
+      0,
+      0
+    ],
+    [
+      11,
+      30,
+      7,
+      0,
+      0,
+      1
+    ],
+    [
+      4,
+      4,
+      13,
+      3,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      1,
+      7,
+      17,
+      46,
+      3
+    ],
+    [
+      15,
+      0,
+      0,
+      3,
+      1,
+      10
+    ]
+  ],
+  "class_names": [
+    "LuminalA",
+    "LuminalB",
+    "ERBB2",
+    "claudin-low",
+    "Basal",
+    "Normal"
+  ],
+  "survival": {
+    "n": 252,
+    "events": 83,
+    "c_index": 0.5837091319052987,
+    "logrank_p": 0.011461256253148611,
+    "risk_model": "CoxPHFitter(penalizer=0.1) fit on METABRIC train, applied to GSE21653"
+  }
+}

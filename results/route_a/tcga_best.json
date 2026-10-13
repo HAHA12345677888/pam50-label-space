@@ -1,0 +1,18 @@
+{
+  "n_train": 958,
+  "n_tcga": 987,
+  "logreg": {
+    "acc": 0.7375886524822695,
+    "macro_f1": 0.5847355934557369
+  },
+  "tf": {
+    "acc": 0.6605876393110436,
+    "macro_f1": 0.5158394946152082
+  },
+  "tf_pre": {
+    "acc": 0.6271529888551165,
+    "macro_f1": 0.48936764533758287
+  },
+  "best": "logreg",
+  "conclusion": "Best TCGA accuracy: logreg (73.76%). Pretraining improved METABRIC CV by 2.71 points but TCGA accuracy is 62.72% vs the linear reference 73.76% -- the CV gain does not transfer across platforms."
+}

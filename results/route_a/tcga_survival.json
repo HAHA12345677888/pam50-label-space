@@ -1,0 +1,30 @@
+{
+  "n": 966,
+  "n_events": 133,
+  "c_index": 0.576545172863666,
+  "logrank_p": 0.04734545922061328,
+  "time_dependent": {
+    "3yr": {
+      "c_index": 0.5864965862156163,
+      "n_events": 56
+    },
+    "5yr": {
+      "c_index": 0.5743323306900009,
+      "n_events": 85
+    },
+    "10yr": {
+      "c_index": 0.5771051499067565,
+      "n_events": 122
+    }
+  },
+  "risk_model": "CoxPHFitter(penalizer=0.1) fit on METABRIC train predictions, applied to TCGA",
+  "orig_reported": {
+    "c_index": 0.5864,
+    "time_dependent": {
+      "3yr": 0.6169,
+      "5yr": 0.5963,
+      "10yr": 0.5872
+    }
+  },
+  "note": "Reproduced pipeline; original construction not preserved in codebase."
+}

@@ -1,0 +1,39 @@
+{
+  "horizon_months": 60.0,
+  "cohort": {
+    "n_rows": 1369,
+    "n_outcome_known": 1325,
+    "n_events": 397
+  },
+  "caveat": "Treatment fields are administered-treatment flags, not response assessments. This is prognosis among treated patients, not treatment-response prediction.",
+  "CHEMOTHERAPY": {
+    "n": 275,
+    "n_events": 120,
+    "event_rate": 0.43636363636363634,
+    "auc_genomic": 0.6236559139784946,
+    "auc_genomic_std": 0.03831941866925908,
+    "auc_subtype_only": 0.5708333333333333,
+    "auc_subtype_only_std": 0.04016906259810413,
+    "delta_vs_subtype": 0.05282258064516132
+  },
+  "HORMONE_THERAPY": {
+    "n": 768,
+    "n_events": 210,
+    "event_rate": 0.2734375,
+    "auc_genomic": 0.6792988141202427,
+    "auc_genomic_std": 0.028047643823457428,
+    "auc_subtype_only": 0.5772769580805294,
+    "auc_subtype_only_std": 0.04031859803887945,
+    "delta_vs_subtype": 0.10202185603971337
+  },
+  "RADIO_THERAPY": {
+    "n": 767,
+    "n_events": 225,
+    "event_rate": 0.29335071707953064,
+    "auc_genomic": 0.7183191754445576,
+    "auc_genomic_std": 0.04475403648328246,
+    "auc_subtype_only": 0.6399293993279722,
+    "auc_subtype_only_std": 0.061972931046687274,
+    "delta_vs_subtype": 0.07838977611658537
+  }
+}

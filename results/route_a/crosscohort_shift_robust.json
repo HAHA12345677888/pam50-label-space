@@ -1,0 +1,17 @@
+{
+  "a_priori_mask_acc": 0.806484295845998,
+  "baseline_acc": 0.7375886524822695,
+  "a_priori_mask_macroF1": 0.7366543506248001,
+  "baseline_macroF1": 0.5847355934557369,
+  "split_half_acc": [
+    0.8097165991902834,
+    0.8012170385395537
+  ],
+  "bootstrap_gain_mean": 6.877710233029382,
+  "bootstrap_ci": [
+    4.964539007092206,
+    8.814589665653493
+  ],
+  "p_gain_positive": 1.0,
+  "n": 987
+}

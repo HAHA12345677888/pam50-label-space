@@ -1,0 +1,196 @@
+{
+  "question": "Can the fusion Transformer be made to beat the linear reference on 6-class PAM50 subtyping and hold up on external validation?",
+  "verdict": "No. The gap is bias-limited rather than optimization-limited, and the single intervention that raised internal CV lowered external accuracy.",
+  "reference": {
+    "model": "LogisticRegression(C=0.01) on Clinical+mRNA+Methylation (713d)",
+    "cv_accuracy": 0.7526,
+    "cv_std": 0.0256,
+    "note": "Reproduced exactly by the rebuilt harness on train-only 5-fold CV."
+  },
+  "step1_harness": {
+    "status": "reference reproduced exactly",
+    "all5_cv": 0.7244,
+    "majority_baseline": 0.357
+  },
+  "step2_diagnosis": {
+    "capacity_sweep": {
+      "n_configs": 12,
+      "min": 0.6555028359511345,
+      "max": 0.6983529668411868,
+      "best_config": "d128_l4"
+    },
+    "learning_curve": {
+      "n": [
+        240,
+        479,
+        718,
+        958
+      ],
+      "cv": [
+        0.6221,
+        0.6472,
+        0.6649,
+        0.6795
+      ]
+    },
+    "log_fit": {
+      "form": "acc = 39.60 + 4.10*ln(n)",
+      "projected_n_for_logreg_parity": 5939,
+      "projected_n_for_78pct": 11579
+    },
+    "conclusion": "Bias-limited. Best capacity configuration reaches 69.84% (d128_l4), 5.4 points below the LogReg reference of 75.26%, and 11 of 12 cells fall in a 65.5-69.8% band, so capacity is not the binding constraint. The learning curve is still rising but flattens: +2.51, +1.77, +1.46 acc-points per 239 samples, an instantaneous slope of 0.43 acc-points per 100 samples at n=958. A log fit (acc = 39.6 + 4.10*ln n) projects 5,939 samples -- 6.2x the current training set -- just to reach LogReg parity, and 11,579 for 78%. No available cohort supplies that. The honest conclusion is that this architecture has a poorer inductive bias than a linear model on this 713-dimension, n=958 problem, so more aggressive regularization or pretraining is unlikely to close a 5-point gap."
+  },
+  "step3_regularization": {
+    "baseline_cv": 0.6774160122164049,
+    "best_single_axis": {
+      "name": "mod_drop_0.2",
+      "cv": 0.6858311518324607
+    },
+    "best_combo": {
+      "config": {
+        "mod_drop": "0.2",
+        "wd": "0.05"
+      },
+      "cv": 0.6806228184991274
+    },
+    "delta_vs_baseline": 0.008415139616055778,
+    "conclusion": "No regularization axis closes the gap to the linear reference."
+  },
+  "step4_pretraining": {
+    "scratch_cv": 0.6732766143106457,
+    "pretrained_cv": 0.7004417539267015,
+    "delta": 0.027165139616055822,
+    "protocol": "encoder pretrained per fold on that fold's training portion only (no leakage)",
+    "conclusion": "Masked-feature pretraining is the only intervention that helps internally (+2.71 points)."
+  },
+  "step5_external_validation": {
+    "n_tcga": 987,
+    "accuracy": {
+      "logreg": 0.7375886524822695,
+      "tf": 0.6605876393110436,
+      "tf_pre": 0.6271529888551165
+    },
+    "macro_f1": {
+      "logreg": 0.5847355934557369,
+      "tf": 0.5158394946152082,
+      "tf_pre": 0.48936764533758287
+    },
+    "c_index": {
+      "logreg": 0.576545172863666,
+      "tf": 0.5511252446183953,
+      "tf_pre": 0.5304346053489889
+    },
+    "published_c_index": 0.5864,
+    "cv_to_tcga_delta": {
+      "logreg": -0.015011347517730589,
+      "tf": -0.012688974999602087,
+      "tf_pre": -0.073288765071585
+    },
+    "conclusion": "Best TCGA accuracy: logreg (73.76%). Pretraining improved METABRIC CV by 2.71 points but TCGA accuracy is 62.72% vs the linear reference 73.76% -- the CV gain does not transfer across platforms."
+  },
+  "step6_treatment_outcome": {
+    "caveat": "Treatment fields are administered-treatment flags, not response assessments. This is prognosis among treated patients, not treatment-response prediction.",
+    "arms": {
+      "CHEMOTHERAPY": {
+        "n": 275,
+        "events": 120,
+        "auc_genomic": 0.6236559139784946,
+        "auc_subtype_only": 0.5708333333333333,
+        "delta": 0.05282258064516132
+      },
+      "HORMONE_THERAPY": {
+        "n": 768,
+        "events": 210,
+        "auc_genomic": 0.6792988141202427,
+        "auc_subtype_only": 0.5772769580805294,
+        "delta": 0.10202185603971337
+      },
+      "RADIO_THERAPY": {
+        "n": 767,
+        "events": 225,
+        "auc_genomic": 0.7183191754445576,
+        "auc_subtype_only": 0.6399293993279722,
+        "delta": 0.07838977611658537
+      }
+    },
+    "conclusion": "The 713-dimension panel out-discriminates a PAM50-subtype-only baseline in all three treated subgroups."
+  },
+  "step7_second_cohort": {
+    "cohort": "GSE21653",
+    "platform": "GPL570 (Affymetrix U133 Plus 2.0)",
+    "n": 266,
+    "n_genes_mapped": 369,
+    "n_panel_genes": 412,
+    "gene_coverage": 0.8956310679611651,
+    "accuracy": 0.631578947368421,
+    "macro_f1": 0.5041523762177184,
+    "per_class": {
+      "LuminalA": {
+        "n": 89,
+        "recall": 0.7752808988764045,
+        "precision": 0.69
+      },
+      "LuminalB": {
+        "n": 49,
+        "recall": 0.6122448979591837,
+        "precision": 0.5769230769230769
+      },
+      "ERBB2": {
+        "n": 24,
+        "recall": 0.5416666666666666,
+        "precision": 0.43333333333333335
+      },
+      "Basal": {
+        "n": 75,
+        "recall": 0.6133333333333333,
+        "precision": 0.9787234042553191
+      },
+      "Normal": {
+        "n": 29,
+        "recall": 0.3448275862068966,
+        "precision": 0.7142857142857143
+      }
+    },
+    "survival": {
+      "n": 252,
+      "events": 83,
+      "c_index": 0.5837091319052987,
+      "logrank_p": 0.011461256253148611,
+      "risk_model": "CoxPHFitter(penalizer=0.1) fit on METABRIC train, applied to GSE21653"
+    },
+    "note": "Genuine second external cohort with PAM50 labels and DFS endpoints; no claudin-low, basal-enriched (75/266)."
+  },
+  "headline_numbers": {
+    "logreg_cv": 0.7526,
+    "best_tf_cv": 0.7004417539267015,
+    "gap_cv": 0.05215824607329855,
+    "logreg_tcga": 0.7375886524822695,
+    "best_tf_tcga": 0.6271529888551165,
+    "gap_tcga": 0.11043566362715296
+  },
+  "step7b_multicohort_training": {
+    "protocol": "train on METABRIC(+GSE21653), evaluate on TCGA (n=987); mRNA-only, 369 common genes, per-platform rank normalization",
+    "tcga_accuracy": {
+      "metabric_only": {
+        "logreg": 0.745694022289767,
+        "tf": 0.6484295845997974,
+        "tf_pre": 0.6565349544072948
+      },
+      "metabric+gse21653": {
+        "logreg": 0.7355623100303952,
+        "tf": 0.6595744680851063,
+        "tf_pre": 0.6474164133738601
+      }
+    },
+    "delta_from_adding_cohort": {
+      "logreg": -0.010131712259371817,
+      "tf": 0.011144883485308954,
+      "tf_pre": -0.00911854103343468
+    },
+    "gap_before": 0.09726443768996962,
+    "gap_after": 0.07598784194528885,
+    "learning_curve_prediction": 1.0,
+    "observed_tf_gain": 1.11,
+    "conclusion": "Adding a second cohort (266 samples, +28%) raised the unguided Transformer by 1.11 points against a learning-curve prediction of +1.00 -- agreement within 0.11 points. The model is on exactly its extrapolated trajectory, confirming the bias-limited diagnosis: the remaining 7.6-point gap would still need roughly 6x more data to close."
+  }
+}

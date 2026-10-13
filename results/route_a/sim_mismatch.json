@@ -1,0 +1,240 @@
+{
+  "design": {
+    "factor_label_space": [
+      0,
+      1,
+      2
+    ],
+    "factor_covariate_shift": [
+      0.0,
+      0.4,
+      0.8
+    ],
+    "factor_prior_shift": [
+      false,
+      true
+    ],
+    "n_seeds": 20,
+    "n_target": 1000,
+    "tau_absent": 0.02,
+    "tau_ratio": 0.1
+  },
+  "rows": [
+    {
+      "n_absent": 0,
+      "cov_shift": 0.0,
+      "prior_shift": false,
+      "n_seeds": 20,
+      "acc_base": 0.742,
+      "acc_oracle": 0.7375499999999999,
+      "acc_detected": 0.7375499999999999,
+      "gain_base_to_detected": -0.004450000000000065,
+      "det_f1": null,
+      "split_half_agreement": 0.907965704329165
+    },
+    {
+      "n_absent": 0,
+      "cov_shift": 0.0,
+      "prior_shift": true,
+      "n_seeds": 20,
+      "acc_base": 0.7396,
+      "acc_oracle": 0.8041499999999999,
+      "acc_detected": 0.80395,
+      "gain_base_to_detected": 0.06435000000000002,
+      "det_f1": null,
+      "split_half_agreement": 0.9416455192207686
+    },
+    {
+      "n_absent": 0,
+      "cov_shift": 0.4,
+      "prior_shift": false,
+      "n_seeds": 20,
+      "acc_base": 0.72515,
+      "acc_oracle": 0.7231500000000001,
+      "acc_detected": 0.7231500000000001,
+      "gain_base_to_detected": -0.0019999999999998908,
+      "det_f1": null,
+      "split_half_agreement": 0.9115592086853876
+    },
+    {
+      "n_absent": 0,
+      "cov_shift": 0.4,
+      "prior_shift": true,
+      "n_seeds": 20,
+      "acc_base": 0.63015,
+      "acc_oracle": 0.70645,
+      "acc_detected": 0.7058,
+      "gain_base_to_detected": 0.07565,
+      "det_f1": null,
+      "split_half_agreement": 0.9180341842546251
+    },
+    {
+      "n_absent": 0,
+      "cov_shift": 0.8,
+      "prior_shift": false,
+      "n_seeds": 20,
+      "acc_base": 0.68665,
+      "acc_oracle": 0.67445,
+      "acc_detected": 0.67445,
+      "gain_base_to_detected": -0.012199999999999989,
+      "det_f1": null,
+      "split_half_agreement": 0.9020189950424987
+    },
+    {
+      "n_absent": 0,
+      "cov_shift": 0.8,
+      "prior_shift": true,
+      "n_seeds": 20,
+      "acc_base": 0.6023999999999999,
+      "acc_oracle": 0.6616500000000001,
+      "acc_detected": 0.6615,
+      "gain_base_to_detected": 0.05910000000000004,
+      "det_f1": null,
+      "split_half_agreement": 0.9116523795539428
+    },
+    {
+      "n_absent": 1,
+      "cov_shift": 0.0,
+      "prior_shift": false,
+      "n_seeds": 20,
+      "acc_base": 0.7742,
+      "acc_oracle": 0.78165,
+      "acc_detected": 0.78115,
+      "gain_base_to_detected": 0.006950000000000012,
+      "det_f1": 0.8,
+      "split_half_agreement": 0.938266714034026
+    },
+    {
+      "n_absent": 1,
+      "cov_shift": 0.0,
+      "prior_shift": true,
+      "n_seeds": 20,
+      "acc_base": 0.76855,
+      "acc_oracle": 0.8439499999999999,
+      "acc_detected": 0.8431500000000002,
+      "gain_base_to_detected": 0.07460000000000022,
+      "det_f1": 0.7083333333333333,
+      "split_half_agreement": 0.9457784738737326
+    },
+    {
+      "n_absent": 1,
+      "cov_shift": 0.4,
+      "prior_shift": false,
+      "n_seeds": 20,
+      "acc_base": 0.7489999999999999,
+      "acc_oracle": 0.7606999999999999,
+      "acc_detected": 0.7604,
+      "gain_base_to_detected": 0.011400000000000077,
+      "det_f1": 0.2,
+      "split_half_agreement": 0.9093751835660063
+    },
+    {
+      "n_absent": 1,
+      "cov_shift": 0.4,
+      "prior_shift": true,
+      "n_seeds": 20,
+      "acc_base": 0.64465,
+      "acc_oracle": 0.7212000000000001,
+      "acc_detected": 0.71935,
+      "gain_base_to_detected": 0.0747000000000001,
+      "det_f1": 0.2,
+      "split_half_agreement": 0.9291362224160353
+    },
+    {
+      "n_absent": 1,
+      "cov_shift": 0.8,
+      "prior_shift": false,
+      "n_seeds": 20,
+      "acc_base": 0.71515,
+      "acc_oracle": 0.72245,
+      "acc_detected": 0.7171000000000001,
+      "gain_base_to_detected": 0.0019500000000001183,
+      "det_f1": 0.0,
+      "split_half_agreement": 0.8995494785694987
+    },
+    {
+      "n_absent": 1,
+      "cov_shift": 0.8,
+      "prior_shift": true,
+      "n_seeds": 20,
+      "acc_base": 0.6186,
+      "acc_oracle": 0.68655,
+      "acc_detected": 0.6772999999999999,
+      "gain_base_to_detected": 0.05869999999999986,
+      "det_f1": 0.0,
+      "split_half_agreement": 0.9136226730570115
+    },
+    {
+      "n_absent": 2,
+      "cov_shift": 0.0,
+      "prior_shift": false,
+      "n_seeds": 20,
+      "acc_base": 0.7692500000000001,
+      "acc_oracle": 0.7785,
+      "acc_detected": 0.7785,
+      "gain_base_to_detected": 0.00924999999999987,
+      "det_f1": 1.0,
+      "split_half_agreement": 0.9405085386153778
+    },
+    {
+      "n_absent": 2,
+      "cov_shift": 0.0,
+      "prior_shift": true,
+      "n_seeds": 20,
+      "acc_base": 0.7787499999999999,
+      "acc_oracle": 0.8583999999999999,
+      "acc_detected": 0.8580500000000001,
+      "gain_base_to_detected": 0.07930000000000015,
+      "det_f1": 0.9233333333333335,
+      "split_half_agreement": 0.9448204504284007
+    },
+    {
+      "n_absent": 2,
+      "cov_shift": 0.4,
+      "prior_shift": false,
+      "n_seeds": 20,
+      "acc_base": 0.72635,
+      "acc_oracle": 0.76685,
+      "acc_detected": 0.7579,
+      "gain_base_to_detected": 0.03154999999999997,
+      "det_f1": 0.6666666666666665,
+      "split_half_agreement": 0.9228456868353833
+    },
+    {
+      "n_absent": 2,
+      "cov_shift": 0.4,
+      "prior_shift": true,
+      "n_seeds": 20,
+      "acc_base": 0.62425,
+      "acc_oracle": 0.7181,
+      "acc_detected": 0.6954499999999999,
+      "gain_base_to_detected": 0.07119999999999993,
+      "det_f1": 0.4583333333333333,
+      "split_half_agreement": 0.9245166077921745
+    },
+    {
+      "n_absent": 2,
+      "cov_shift": 0.8,
+      "prior_shift": false,
+      "n_seeds": 20,
+      "acc_base": 0.70585,
+      "acc_oracle": 0.73865,
+      "acc_detected": 0.72515,
+      "gain_base_to_detected": 0.019299999999999984,
+      "det_f1": 0.6666666666666665,
+      "split_half_agreement": 0.9157953653239901
+    },
+    {
+      "n_absent": 2,
+      "cov_shift": 0.8,
+      "prior_shift": true,
+      "n_seeds": 20,
+      "acc_base": 0.61155,
+      "acc_oracle": 0.69375,
+      "acc_detected": 0.6744,
+      "gain_base_to_detected": 0.06284999999999996,
+      "det_f1": 0.5916666666666666,
+      "split_half_agreement": 0.9155011109402018
+    }
+  ]
+}

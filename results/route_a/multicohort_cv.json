@@ -1,0 +1,36 @@
+{
+  "protocol": "train on METABRIC(+GSE21653), evaluate on TCGA (n=987); mRNA-only, 369 common genes, per-platform rank normalization",
+  "results": {
+    "metabric_only": {
+      "n_train": 958,
+      "logreg": {
+        "acc": 0.745694022289767,
+        "macro_f1": 0.5979832420363786
+      },
+      "tf": {
+        "acc": 0.6484295845997974,
+        "macro_f1": 0.5099929981536959
+      },
+      "tf_pre": {
+        "acc": 0.6565349544072948,
+        "macro_f1": 0.5212621147081208
+      }
+    },
+    "metabric+gse21653": {
+      "n_train": 1224,
+      "logreg": {
+        "acc": 0.7355623100303952,
+        "macro_f1": 0.5797076656512707
+      },
+      "tf": {
+        "acc": 0.6595744680851063,
+        "macro_f1": 0.5204070128910425
+      },
+      "tf_pre": {
+        "acc": 0.6474164133738601,
+        "macro_f1": 0.5139548333036438
+      }
+    }
+  },
+  "note": "Tests whether additional real training samples narrow the Transformer gap."
+}

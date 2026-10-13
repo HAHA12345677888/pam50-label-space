@@ -1,0 +1,86 @@
+{
+  "cohort": "GSE20194",
+  "platform": "GPL96 (HG-U133A)",
+  "n": 278,
+  "n_pcr": 56,
+  "n_rd": 222,
+  "endpoint": "pcr_vs_rd (pathological complete response after neoadjuvant chemotherapy)",
+  "n_panel_genes": 276,
+  "n_panel_total": 412,
+  "clinical_features": [
+    "age",
+    "ER",
+    "PR",
+    "HER2",
+    "grade(BMNG)",
+    "histology_IDC"
+  ],
+  "clinical_only": {
+    "auc": 0.7908783783783784,
+    "auc_std": 0.003640242672433309
+  },
+  "genomic_only": {
+    "auc": 0.7727960102960103,
+    "auc_std": 0.01555943105794231
+  },
+  "clinical_plus_genomic": {
+    "auc": 0.7936615186615187,
+    "auc_std": 0.01420067562285946
+  },
+  "delta_genomic_over_clinical": {
+    "mean": 0.004485538025666086,
+    "ci95": [
+      -0.05964832914355071,
+      0.06116802115583079
+    ],
+    "p_gt0": 0.5755
+  },
+  "predicted_subtype_pcr": {
+    "LumA": {
+      "n": 100,
+      "pcr": 6,
+      "rate": 0.06
+    },
+    "LumB": {
+      "n": 68,
+      "pcr": 9,
+      "rate": 0.1323529411764706
+    },
+    "Her2": {
+      "n": 28,
+      "pcr": 15,
+      "rate": 0.5357142857142857
+    },
+    "claudin-low": {
+      "n": 42,
+      "pcr": 11,
+      "rate": 0.2619047619047619
+    },
+    "Basal": {
+      "n": 33,
+      "pcr": 14,
+      "rate": 0.42424242424242425
+    },
+    "Normal": {
+      "n": 7,
+      "pcr": 1,
+      "rate": 0.14285714285714285
+    }
+  },
+  "auc_basal_probability": 0.7386583011583012,
+  "subtype_value_test": {
+    "ER_status_alone": 0.7273326898326898,
+    "clinical(6)": 0.7908783783783784,
+    "subtype_probs(6)": 0.7589124839124839,
+    "clinical+subtype": 0.7971364221364222,
+    "delta_clinical_plus_subtype": {
+      "mean": 0.0033765775927405376,
+      "ci95": [
+        -0.023127788623345275,
+        0.030030119192786888
+      ],
+      "p_gt0": 0.602
+    }
+  },
+  "notes_subtype_value_test": "ER status is already a member of the clinical block (age, ER, PR, HER2, grade, histology), so a separate 'clinical+ER+subtype' condition is not a distinct input space and tests nothing beyond 'clinical+subtype'; it is deliberately not reported as an independent comparison."
+}

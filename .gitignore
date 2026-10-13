@@ -27,7 +27,8 @@ checkpoints/
 checkpoints_*/
 
 # Results
-results/
+# results/ is tracked: it holds the JSON outputs behind the manuscript's
+# reported numbers, which the Code Availability statement points to.
 results_*/
 
 # LaTeX intermediate files
@@ -47,11 +48,14 @@ Thumbs.db
 .ipynb_checkpoints/
 *.ipynb
 
-# Scripts
-scripts/
+# Scripts are tracked: they are the analysis code the manuscript cites.
 
 # Install scripts
 install_latex.sh
 
 # Workspace
 *.code-workspace
+
+# Tracked exception: the JSON outputs behind the manuscript's reported
+# numbers are part of the reproducibility package (see Code Availability).
+!results/route_a/*.json
