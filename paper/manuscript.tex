@@ -613,6 +613,11 @@ six-class macro F1 is affected by the absent claudin-low class.}
 
 We tested whether the absent class could be detected without annotation-space information.
 Unconstrained EM and two detector procedures did not reliably identify it in the tested settings.
+\emph{The detection-F1 figures quoted in this and the following two subsections come from the
+original scoring function, which returns zero when a detector correctly predicts the empty set;
+every cohort with no absent class was therefore scored as a total failure irrespective of the
+detector's answer. Section~\ref{sec:detector_v2} re-scores the same simulation under the standard
+empty-set convention and should be read as the reference for detector ranking.}
 
 Running the same EM procedure without the mask (em\_full), using the same classifier and
 unlabelled target predictions, leaves claudin-low with an estimated
@@ -1102,7 +1107,10 @@ or other cohort effects.
 \textbf{The tested procedures did not recover the label space from unlabeled predictions.}
 Unconstrained EM retained an estimated prior of 0.0751 for claudin-low on TCGA-BRCA, although
 that class is absent under PAM50 annotation. The geometric detector had low simulated detection
-F1 (0.047), and the BIC procedure selected a non-empty absent set in 90\% of clean null runs.
+F1 under both scorings ($0.047$ originally, $0.232$ under the standard empty-set convention),
+and the BIC procedure selected a non-empty absent set in 90\% of clean null runs; the
+uncalibrated EM rule that ranked best of the six after re-scoring still flags clean cohorts
+once prior shift is present.
 These results show that the tested procedures did not reliably identify the annotation space at
 these sample sizes. They do not establish a general impossibility theorem for every classifier
 or detector. In practice, the allowed target labels should be specified from cohort documentation,
