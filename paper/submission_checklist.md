@@ -349,6 +349,8 @@ label-space finding that became the paper's main line.
       `HAHA12345677888/breast-cancer-multimodal-transformer`. Publishing under a different owner
       than the one in the Code availability statements means editing both manuscripts first.
 - [ ] Zenodo DOI is promised in the code-availability statement but not yet minted; mint it from the
-      archived GitHub snapshot after the push above, then update the commit hash in the statement
-      (`24c3ed9` is now stale) and soften the sentence if the DOI is still pending at submission.
+      archived GitHub snapshot after the push above, then replace the corresponding sentence
+      ("A versioned archive with a citable DOI will be deposited before publication.") with the
+      minted DOI, or soften it if the DOI is still pending at submission. The statement names no
+      commit hash, so no hash inside it needs updating.
 
