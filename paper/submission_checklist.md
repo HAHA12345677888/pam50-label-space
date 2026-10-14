@@ -14,8 +14,8 @@
 > mismatch, not a quality judgement, and no amount of revision can fix it.
 
 > **Page budget.** JBHI regular papers are 8–12 double-column pages (over-length charges apply
-> beyond 12). Current manuscript: 36 single-column double-spaced pages ≈ 8,450 body words plus
-> 15 figures and 10 tables. In IEEE two-column format that lands at roughly 11–14 pages, so the
+> beyond 12). Current manuscript: 41 single-column pages plus
+> 16 figures and 13 tables. In IEEE two-column format that lands at roughly 11–14 pages, so the
 > figure set needs trimming — move the Transformer-investigation figures (11–15) and the
 > lower-value ablations to the supplement.
 
@@ -201,6 +201,8 @@ label-space finding that became the paper's main line.
 - [x] `detector_v2.json` (78 KB) + `detector_v2_raw.npz` — empty-set-convention re-scoring; raw sets kept so the metric can be re-examined without re-running the simulation
 - [x] `gse21653_validation.json`, `multicohort_cv.json` — second cohort
 - [x] `pcr_gse20194.json` — treatment response
+- [x] `harmonization.json` — reduced three-layer space shared by METABRIC and TCGA
+- [x] `multimodal_external.json` — modality ablation re-run inside that space (figure J)
 - [x] `figure_data.json` — governing source for Figures 2/3/6
 
 ### Headline numbers
@@ -215,15 +217,31 @@ label-space finding that became the paper's main line.
 | **TCGA after label-space reconciliation** | **80.65%** |
 | **GSE21653 after label-space reconciliation** | **74.06%** |
 | TCGA C-index (linear / TF / TF+pre) | 0.577 / 0.551 / 0.530 |
+| **Harmonized space: mRNA only** (412 genes) | CV 72.91% / METABRIC test 72.82% / TCGA 80.55% |
+| Harmonized space: mRNA + clinical | CV 73.43% / METABRIC test 75.24% / TCGA 80.40% |
+| Harmonized space: mRNA + methylation | CV 72.91% / METABRIC test 72.33% / TCGA 78.67% |
+| Harmonized space: all three | CV 73.17% / METABRIC test 74.76% / TCGA 79.11% |
+| Flagship 713-dim (internal only) | CV 75.92% / METABRIC test 73.79% |
+| Methylation effect on TCGA accuracy | **−1.9 points** (no gain) |
+| Harmonized clinical effect on external accuracy | ≤ 0.3 points |
+| McNemar, every multimodal config vs mRNA alone | *p* = 0.13 to 1.00 (none significant) |
+| **Detector re-scored: best F1 / exact-set match** | **0.786 / 0.550** (uncalibrated EM rule, of six) |
 
 ### Manuscript integration
 - [x] Title and abstract rewritten around label-space mismatch
 - [x] New Results section on label-space mismatch, decomposition, simulation (with `figH`)
 - [x] New Methods subsections: label-space reconciliation, controlled simulation, absence detector
 - [x] New Results section: pCR treatment response (with `figI`)
+- [x] New Results subsection: the multimodal advantage does not survive external validation —
+      harmonized three-layer space, ablation table, bootstrap CIs, McNemar tests (with `figJ`,
+      `\label{sec:external_multimodal}`)
+- [x] New Results subsection: a corrected metric reverses the detector ranking
+      (`\label{sec:detector_v2}`)
+- [x] Discussion: modality selection rewritten to state that the internal advantage is not
+      transportable, and that 59 METABRIC-specific clinical dimensions carry the internal gain
 - [x] Transformer negative result demoted to supporting evidence (Section 7)
 - [x] Tables: `tab:route_a`, `tab:treatment`, `tab:tcga_per_class`, `tab:multicohort`, `tab:cox`
-- [x] Structural validation: balanced environments, 0 dangling refs, 15/15 figures present
+- [x] Structural validation: balanced environments, 0 dangling refs, 16/16 figures present
 
 ---
 
@@ -235,14 +253,16 @@ label-space finding that became the paper's main line.
       `pdflatex.fmt`). The **host is fine**: TinyTeX 2026 lives at
       `~/Library/TinyTeX/bin/universal-darwin/` (off PATH, which is why `which pdflatex` fails and
       it looks like LaTeX is missing) with a complete `texmf-dist`. `./build.sh` →
-      `build/manuscript.pdf`, **36 pages, 883,769 bytes, 0 undefined citations/references**.
+      `build/manuscript.pdf`, **36 pages, 883,769 bytes, 0 undefined citations/references**
+      at the time of that fix; the current `paper/manuscript.pdf` is the later revision at
+      **41 pages, 885,699 bytes, 16 figures, 13 tables, 0 undefined citations/references**.
       A second, larger defect surfaced once BibTeX actually ran: **59 of 84 citations never
       resolved**, because the `.bib` keys carried the entry's index suffix while the body text used
       the bare author-year form (`\cite{mao2025a}` vs key `mao2025a21`). Only 24 references reached
       the PDF. Fixed by canonicalising all keys against the citations (see Files -> `references.bib`).
-      Confirmed clean: `manuscript_ieee.tex` builds to **17 pages, 550,775 bytes, 84 references,
+      Confirmed clean: `manuscript_ieee.tex` builds to **18 pages, 583,568 bytes, 84 references,
       0 undefined citations, 0 undefined references, 0 LaTeX errors**; the companion
-      `manuscript.tex` builds to 36 pages, 0 undefined citations. tectonic is still not an option
+      `manuscript.tex` builds to 41 pages, 0 undefined citations. tectonic is still not an option
       here — its bundle host `relay.fullyjustified.net` is not on the sandbox allowlist.
 - [x] `figF` caption corrected. It plots 5-year *outcome* among treated METABRIC patients, not
       pCR. The pCR claim now has its own figure (`figI`, from `pcr_gse20194.json`) with a caption
@@ -255,7 +275,7 @@ label-space finding that became the paper's main line.
       reintroduce 0.586.
 - [x] **RESOLVED — two-column IEEEtran manuscript exists.** `paper/manuscript_ieee.tex`
       (`\documentclass[10pt,journal,compsoc,twocolumn]{IEEEtran}`) is a full JBHI-format build:
-      17 pages, 0 undefined citations/references, 0 LaTeX errors. Every `\includegraphics` width was
+      18 pages, 0 undefined citations/references, 0 LaTeX errors. Every `\includegraphics` width was
       re-tuned to the 3.5 in single-column measure via the `\fitcol` helper, and the wide tables were
       scaled with `\AtBeginEnvironment{table}{\small}`. `IEEEtran.cls` + `IEEEtran.bst` are installed
       in `~/Library/TinyTeX/texmf-local/` (not in a repo `texmf/`), so the class resolves out of the box.
@@ -268,6 +288,25 @@ label-space finding that became the paper's main line.
       Declarations block.
 
 ## Pre-submission residue
+- [ ] **The code is committed locally but not pushed.** `git log` HEAD is `a36fe6d` on `main`, working
+      tree clean, two new commits on top of `46b5b95`:
+      - `ffecad6` — multimodal external validation, harmonized TCGA cohort, corrected detector metrics
+      - `a36fe6d` — flag the superseded detector scoring where it is still quoted
+
+      Two external blockers, both needing the user:
+      1. No GitHub credential is configured for this workspace, so no push can authenticate. Add one
+         under **Customize -> Credentials -> Add Credential** (a PAT with `public_repo` or `repo`).
+      2. The intended remote `HAHA12345677888/breast-cancer-multimodal-transformer` **does not exist**
+         — `GET /repos/HAHA12345677888/...` returns 404. The account itself exists (14 public repos).
+         The repository name `breast-cancer-multimodal-transformer` is currently occupied only by
+         `HAHA1122344/...`, which is where `origin` still points.
+         Create the repo on the target account, or confirm that the existing `HAHA1122344` repository
+         (already public, carrying the earlier label-space code and results) is the intended target.
+
+      The remote URL could not be repointed from inside this workspace: `.git/config` is a protected
+      path and the sandbox refuses the write. Once a credential exists, the publish is:
+      `git remote set-url origin <target-url> && git push -u origin main`
 - [ ] Zenodo DOI is promised in the code-availability statement but not yet minted; mint it from the
-      archived GitHub snapshot (commit `24c3ed9`) before submitting, or soften the sentence.
+      archived GitHub snapshot after the push above, then update the commit hash in the statement
+      (`24c3ed9` is now stale) and soften the sentence if the DOI is still pending at submission.
 
