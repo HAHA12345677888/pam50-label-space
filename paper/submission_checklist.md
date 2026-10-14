@@ -227,6 +227,20 @@ label-space finding that became the paper's main line.
 | McNemar, every multimodal config vs mRNA alone | *p* = 0.13 to 1.00 (none significant) |
 | **Detector re-scored: best F1 / exact-set match** | **0.786 / 0.550** (uncalibrated EM rule, of six) |
 
+### Numeric provenance
+
+- [x] `results/route_a/numbers_audit.json` — every numeric claim in the manuscript and
+  this checklist recomputed from the result file that contains it and compared at the
+  precision it is quoted. **28 claims, 0 mismatches.** Notable resolutions:
+  - The TCGA C-index triple (0.577 / 0.551 / 0.530) lives in `route_a_summary.json`
+    under `step5_external_validation.c_index`, not in `tcga_survival.json`, which
+    carries only the reproduced linear value plus the time-dependent ones.
+  - The pCR delta is the paired-bootstrap mean of the per-sample AUC difference
+    (+0.004486), not the difference of the two point AUCs (0.0028); the paired
+    estimate is the appropriate one and is what the abstract quotes.
+  - "Harmonized clinical external gain <= 0.3 points" is an upper bound: the gain is
+    -0.14 restricted and +0.29 unrestricted.
+
 ### Manuscript integration
 - [x] Title and abstract rewritten around label-space mismatch
 - [x] New Results section on label-space mismatch, decomposition, simulation (with `figH`)
