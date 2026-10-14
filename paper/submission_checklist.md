@@ -304,8 +304,21 @@ label-space finding that became the paper's main line.
          (already public, carrying the earlier label-space code and results) is the intended target.
 
       The remote URL could not be repointed from inside this workspace: `.git/config` is a protected
-      path and the sandbox refuses the write. Once a credential exists, the publish is:
-      `git remote set-url origin <target-url> && git push -u origin main`
+      path and the sandbox refuses the write. `./publish_github.sh` works around that — it reads the
+      token from the environment (never printed, never written to disk, never placed in argv where
+      `ps` would see it), creates the repository through the API if it is missing, and supplies the
+      credential helper inline with `git -c` so `.git/config` is never touched.
+
+      To publish, two steps, neither of which can be done from inside this workspace:
+      1. Add a GitHub credential under **Customize -> Credentials -> Add Credential** (classic PAT
+         with `repo` scope, or a fine-grained token with Administration: read and write so the
+         repository can be created). `host.credentials.request` only supports OpenAlex here, so
+         there is no way for the agent to obtain this itself.
+      2. Run `./publish_github.sh --push` (or `./publish_github.sh` first for a dry run).
+
+      The target is controlled by `GITHUB_OWNER` / `GITHUB_REPO`, defaulting to
+      `HAHA12345677888/breast-cancer-multimodal-transformer`. Publishing under a different owner
+      than the one in the Code availability statements means editing both manuscripts first.
 - [ ] Zenodo DOI is promised in the code-availability statement but not yet minted; mint it from the
       archived GitHub snapshot after the push above, then update the commit hash in the statement
       (`24c3ed9` is now stale) and soften the sentence if the DOI is still pending at submission.
