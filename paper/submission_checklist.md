@@ -351,14 +351,15 @@ label-space finding that became the paper's main line.
       funding statement.
 
 ## Pre-submission residue
-- [x] **DONE** — the code is pushed and public. The working tree is clean and `main` on
-      `github.com/HAHA12345677888/pam50-label-space` sits at the same commit as the local
-      branch head. Do not quote a commit SHA or count here: both go stale with the next push,
-      so verify with the API (`GET /repos/HAHA12345677888/pam50-label-space` and
-      `/commits`) instead. The published work covers, at the level of themes rather than commit
+- [x] **DONE** — the repository is public and has received this history. This line deliberately
+      does not assert that local and remote are in step, because any commit made after the last
+      push silently falsifies that claim; compare them at submit time with
+      `git rev-parse HEAD` against `GET /repos/HAHA12345677888/pam50-label-space/commits/main`.
+      Nor does it quote a commit SHA or file count — both go stale with the next push. The
+      published work covers, at the level of themes rather than commit
       messages: the multimodal external validation and harmonized TCGA cohort, the corrected
       detector scoring and its provenance audit, the submission-checklist updates, the publish
-      helper, and the fixes to the five defects found in review.
+      helper, the author-list change, and the fixes to the defects found in review.
 
       Note `publish_github.sh` only exists from the commit that added it onward, so a checkout that
       predates that commit will not have the helper.
