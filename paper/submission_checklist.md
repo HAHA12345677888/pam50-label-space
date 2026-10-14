@@ -21,6 +21,16 @@
 > from this note, since every rebuild changes it:
 > `python -c "import pypdfium2 as p;print(len(p.PdfDocument('paper/manuscript.pdf')),'pages')"`.
 
+> **Code-availability gap — must be closed before submission.** The Code availability statement in
+> both manuscripts points at `github.com/HAHA1122344/breast-cancer-multimodal-transformer`, which
+> is public and resolves. But the pushed tip `46b5b95` predates the current work by 10 commits, so
+> a reviewer following that link finds an older and different result set. Confirmed absent from the
+> pushed tree: `results/route_a/multimodal_external.json`, `results/route_a/detector_v2.json`,
+> `results/route_a/numbers_audit.json`, `scripts/route_a_step17_detector_v2.py`, and the figure
+> generator for `figJ`. The statement's claim that the repository "contains the analysis scripts,
+> the derived result files, and the figure generators used for the reported results" is not
+> currently true of the public copy. Push before submitting — see the residue section below.
+
 ---
 
 ## Files
@@ -159,9 +169,10 @@
 - [ ] Write cover letter — lead with the label-space finding, not the classifier
 - [ ] Prepare highlights (3–5 bullets)
 - [ ] Consider submitting `data/` gene panels as supplementary data
-- [ ] Check JBHI-specific formatting: it is a two-column IEEEtran template, current source is
-      single-column `article`. Template conversion is required before submission and will need
-      figure widths re-tuned.
+- [x] **DONE** — JBHI-specific formatting: `paper/manuscript_ieee.tex` is a complete two-column
+      IEEEtran build (`\documentclass[10pt,journal,compsoc,twocolumn]{IEEEtran}`), so no template
+      conversion remains. Figure widths were re-tuned to the 3.5 in single-column measure via
+      `\fitcol`. What *does* remain is the page budget: see the note at the top of this file.
 
 ---
 
