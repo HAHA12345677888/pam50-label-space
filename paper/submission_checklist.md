@@ -311,19 +311,16 @@ label-space finding that became the paper's main line.
 
 ## Pre-submission residue
 - [ ] **The code is committed locally but not pushed.** The working tree is clean and the local `main`
-      branch is ahead of the remote tip `46b5b95`. Run `git log --oneline 46b5b95..HEAD` for the
-      authoritative list and count — this line deliberately does not hardcode them, because every
-      further commit would make it stale. The commits made in the session that closed the Route A
-      submission package were:
-      - multimodal external validation, harmonized TCGA cohort, corrected detector metrics
-      - flag the superseded detector scoring where it is still quoted
-      - update the submission checklist to the verified build state and record the publish blockers
-      - add the publish helper (`publish_github.sh`) and record the exact publish path
-      - add the numeric provenance audit: every claim traced to its source
-      - fix the null-FPR row, the repo-state line, the author block and the rounded TCGA delta
+      branch is ahead of the remote tip `46b5b95`. `git log --oneline 46b5b95..HEAD` is the
+      authoritative list and count of what is unpushed — this line deliberately does not enumerate
+      the commits or hardcode a SHA, because either would go stale with the next commit. The
+      unpushed work covers, at the level of themes rather than commit messages: the multimodal
+      external validation and harmonized TCGA cohort, the corrected detector scoring and its
+      provenance audit, the submission-checklist updates, the publish helper, and the fixes to the
+      five defects found in review.
 
-      Note `publish_github.sh` only exists from the fourth of these onward, so a checkout that predates
-      it will not have the helper.
+      Note `publish_github.sh` only exists from the commit that added it onward, so a checkout that
+      predates that commit will not have the helper.
 
       Two external blockers, both needing the user:
       1. No GitHub credential is configured for this workspace, so no push can authenticate. Add one
