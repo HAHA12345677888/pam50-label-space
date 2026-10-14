@@ -109,7 +109,7 @@
 | Uncalibrated EM, exact-set match | 0.550 | detector_v2.json |
 | Uncalibrated EM, null false positives | 17/120 | detector_v2.json |
 | Calibrated EM, micro P / R / F1 | 0.577 / 0.876 / 0.696 | detector_v2.json |
-| Calibrated EM, null false positives | 73/120 (20/20 at every cov shift when prior shift present) | detector_v2.json |
+| Calibrated EM, null false positives | 73/120 (57/60 under prior shift: 20/20, 18/20, 19/20 across the three covariate-shift levels; 16/60 without) | detector_v2.json |
 | Importance-weighted EM, micro F1 | 0.542 (null FP 56/120) | detector_v2.json |
 | Probability-frequency, micro F1 | 0.682 (null FP 87/120; 20/20 under prior shift) | detector_v2.json |
 | Geometric coherence, micro F1 | 0.232 (null FP 27/120) | detector_v2.json |
@@ -138,17 +138,22 @@
 
 ## Before Submission
 
-- [x] Compile LaTeX — **DONE on the host**, 36 pages, 0 undefined citations.
+- [x] Compile LaTeX — **DONE on the host**, 41 pages, 0 undefined citations.
       The blocker was only ever the platform sandbox. The host has a working TinyTeX
       (TeX Live 2026) at `~/Library/TinyTeX/bin/universal-darwin/`, which is *not* on PATH —
       so a bare `pdflatex` appears missing. Run `cd paper && ./build.sh`; it sets PATH itself
       and refuses to ship if any citation/reference is undefined.
 - [x] Generate all publication figures from `make_fig*.py` / `generate_figures.py`
-- [x] Convert figures to PDF/vector format, all 15 embedded and verified present
+- [x] Convert figures to PDF/vector format, all 16 embedded and verified present
 - [x] Cross-reference integrity: 0 dangling `\ref`, 0 duplicate `\label`, 0 double-embedded figures
-- [ ] Remove placeholder author names/affiliations
-- [ ] Add ORCID and corresponding author email
-- [ ] Replace the repository URL placeholder (`github.com/[username]/...`) in the abstract
+- [x] **DONE** — placeholder author names/affiliations removed. Both `manuscript.tex` and
+      `manuscript_ieee.tex` now carry the real affiliation (Faculty of Medicine and Health
+      Sciences, Universiti Sains Malaysia, Kubang Kerian, Kelantan) and the corresponding-author
+      email in the `\author{}` block and in the Declarations.
+- [ ] Add ORCID (corresponding-author email is now present in both manuscripts)
+- [x] **DONE** — no `[username]` placeholder remains; both manuscripts point at the real public
+      repository `github.com/HAHA1122344/breast-cancer-multimodal-transformer`. If the code moves
+      to the `HAHA12345677888` account, update the `\href` in both files and recompile.
 - [ ] Write cover letter — lead with the label-space finding, not the classifier
 - [ ] Prepare highlights (3–5 bullets)
 - [ ] Consider submitting `data/` gene panels as supplementary data
@@ -295,17 +300,30 @@ label-space finding that became the paper's main line.
       in `~/Library/TinyTeX/texmf-local/` (not in a repo `texmf/`), so the class resolves out of the box.
       Note the build must run `pdflatex -> bibtex -> pdflatex -> pdflatex` in that order; `latexmk`
       mis-sequences BibTeX against the freshly-written `.aux` on this TinyTeX install.
-- [x] **RESOLVED — affiliation/author block carries real values**: Faculty of Medicine and Health
-      Sciences, Universiti Sains Malaysia, Kubang Kerian, Kelantan, Malaysia; corresponding author
-      Shuxing Liu. Data-availability (cBioPortal/GEO), code-availability (GitHub + Zenodo DOI pending),
-      author-contributions, funding, competing-interests and ethics statements are all present in the
-      Declarations block.
+- [x] **RESOLVED — affiliation/author block carries real values in BOTH manuscripts**: Faculty of
+      Medicine and Health Sciences, Universiti Sains Malaysia, Kubang Kerian, Kelantan, Malaysia;
+      corresponding author Shuxing Liu (email in the `\author{}` block). Data-availability
+      (cBioPortal/GEO) and code-availability (GitHub; Zenodo DOI still pending) statements are
+      present, and the Declarations block now carries real author-contribution, funding,
+      competing-interest and ethics text in both files. The remaining author-side items are ORCID
+      and confirming the funding and competing-interest wording, both tracked under
+      "Before Submission".
 
 ## Pre-submission residue
-- [ ] **The code is committed locally but not pushed.** `git log` HEAD is `a36fe6d` on `main`, working
-      tree clean, two new commits on top of `46b5b95`:
-      - `ffecad6` — multimodal external validation, harmonized TCGA cohort, corrected detector metrics
-      - `a36fe6d` — flag the superseded detector scoring where it is still quoted
+- [ ] **The code is committed locally but not pushed.** The working tree is clean and the local `main`
+      branch is ahead of the remote tip `46b5b95`. Run `git log --oneline 46b5b95..HEAD` for the
+      authoritative list and count — this line deliberately does not hardcode them, because every
+      further commit would make it stale. The commits made in the session that closed the Route A
+      submission package were:
+      - multimodal external validation, harmonized TCGA cohort, corrected detector metrics
+      - flag the superseded detector scoring where it is still quoted
+      - update the submission checklist to the verified build state and record the publish blockers
+      - add the publish helper (`publish_github.sh`) and record the exact publish path
+      - add the numeric provenance audit: every claim traced to its source
+      - fix the null-FPR row, the repo-state line, the author block and the rounded TCGA delta
+
+      Note `publish_github.sh` only exists from the fourth of these onward, so a checkout that predates
+      it will not have the helper.
 
       Two external blockers, both needing the user:
       1. No GitHub credential is configured for this workspace, so no push can authenticate. Add one

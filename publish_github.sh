@@ -1,10 +1,16 @@
 #!/usr/bin/env bash
 # Create (if missing) and push this repository to GitHub.
 #
-# The token is read from the environment and never printed, never written to
-# a file, and never embedded in a command line that would show up in the
-# process list. Create it once under Customize -> Credentials -> Add
-# Credential; the token then arrives as GITHUB_TOKEN in every session.
+# The token is read from the environment. It is never printed and never written
+# to a file. For the API calls it is handed to curl through a config stream on
+# stdin (-K -), so it does not appear in curl's argument vector and is not
+# visible to ps or /proc/<pid>/cmdline. The git push reaches GitHub over HTTPS
+# with the token echoed to git through a pipe by an inline credential helper,
+# for the same reason. Note that the token does live in this process's
+# environment, which is readable by processes running as the same user; that is
+# unavoidable for any credential the session injects.
+# Create the credential once under Customize -> Credentials -> Add Credential;
+# it then arrives as GITHUB_TOKEN in every session.
 #
 # Usage:
 #   ./publish_github.sh            # dry run: report what would happen
@@ -23,21 +29,16 @@ if [ -z "${GITHUB_TOKEN:-}" ]; then
   exit 2
 fi
 
-api() {  # api METHOD PATH [BODY] -- token stays in the env, out of argv
+api() {  # api METHOD PATH [BODY] -- token goes to curl via stdin, never argv
   local method="$1" path="$2" body="${3:-}"
-  if [ -n "$body" ]; then
-    curl -sS -X "$method" \
-      -H "Authorization: Bearer ${GITHUB_TOKEN}" \
-      -H "Accept: application/vnd.github+json" \
-      -H "X-GitHub-Api-Version: 2022-11-28" \
-      -d "$body" "https://api.github.com${path}"
-  else
-    curl -sS -X "$method" \
-      -H "Authorization: Bearer ${GITHUB_TOKEN}" \
-      -H "Accept: application/vnd.github+json" \
-      -H "X-GitHub-Api-Version: 2022-11-28" \
-      "https://api.github.com${path}"
-  fi
+  {
+    printf 'header = "Authorization: Bearer %s"\n' "${GITHUB_TOKEN}"
+    printf 'header = "Accept: application/vnd.github+json"\n'
+    printf 'header = "X-GitHub-Api-Version: 2022-11-28"\n'
+    if [ -n "$body" ]; then
+      printf 'data = "%s"\n' "$(printf '%s' "$body" | sed 's/\\/\\\\/g; s/"/\\"/g')"
+    fi
+  } | curl -sS -X "$method" -K - "https://api.github.com${path}"
 }
 
 echo "==> Checking ${OWNER}/${NAME}"
