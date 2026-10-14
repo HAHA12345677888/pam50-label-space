@@ -13,13 +13,23 @@
 > PAM50 genomics paper would be desk-rejected out of scope, without review — this is a scope
 > mismatch, not a quality judgement, and no amount of revision can fix it.
 
-> **Page budget.** JBHI regular papers are 8–12 double-column pages (over-length charges apply
-> beyond 12). The manuscript carries 16 figures and 13 tables, which in IEEE two-column format
-> lands well past that budget, so the figure set needs trimming — move the
-> Transformer-investigation figures (11–15) and the
-> lower-value ablations to the supplement. Read the current page count off the PDF rather than
-> from this note, since every rebuild changes it:
-> `python -c "import pypdfium2 as p;print(len(p.PdfDocument('paper/manuscript.pdf')),'pages')"`.
+> **Page budget — the main remaining blocker.** JBHI regular papers are 8–12 double-column pages
+> (over-length charges apply beyond 12). Measured at the last build: `manuscript_ieee.pdf` is
+> **19 pages**, carrying 10 figures and 12 tables — roughly **7 pages over** the budget. The
+> single-column `manuscript.tex` carries 16 figures and 13 tables across 41 pages; it is the
+> arXiv/self-archive version, not the submission.
+>
+> The Transformer-investigation material (learning curves, capacity sweep, regularization,
+> pretraining, external-validation reversal) is *already* in the supplement as Section S1, so it
+> is not available as further savings. The trim has to come from the duplication that remains:
+> the modality-ablation figure restates Table 1, and the model-comparison figure restates
+> Table 2, so two figures can go with no information loss; beyond that, lower-value tables
+> (five-class training baselines, paired significance tests, calibration) should move to the
+> supplement rather than be cut.
+>
+> Read the current page count off the PDF rather than from this note, since every rebuild
+> changes it:
+> `python -c "import pypdfium2 as p;print(len(p.PdfDocument('paper/manuscript_ieee.pdf')),'pages')"`.
 
 > **Code availability — CLOSED.** Both manuscripts point at
 > `github.com/HAHA12345677888/pam50-label-space`, and that repository is public and populated:
