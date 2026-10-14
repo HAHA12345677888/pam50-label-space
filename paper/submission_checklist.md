@@ -14,10 +14,12 @@
 > mismatch, not a quality judgement, and no amount of revision can fix it.
 
 > **Page budget.** JBHI regular papers are 8–12 double-column pages (over-length charges apply
-> beyond 12). Current manuscript: 41 single-column pages plus
-> 16 figures and 13 tables. In IEEE two-column format that lands at roughly 11–14 pages, so the
-> figure set needs trimming — move the Transformer-investigation figures (11–15) and the
-> lower-value ablations to the supplement.
+> beyond 12). The manuscript carries 16 figures and 13 tables, which in IEEE two-column format
+> lands well past that budget, so the figure set needs trimming — move the
+> Transformer-investigation figures (11–15) and the
+> lower-value ablations to the supplement. Read the current page count off the PDF rather than
+> from this note, since every rebuild changes it:
+> `python -c "import pypdfium2 as p;print(len(p.PdfDocument('paper/manuscript.pdf')),'pages')"`.
 
 ---
 
