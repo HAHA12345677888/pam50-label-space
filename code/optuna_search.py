@@ -4,7 +4,7 @@ import torch
 import numpy as np
 from torch.utils.data import DataLoader
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)) if '__file__' in globals() else os.getcwd())
 from models.unified_model import UnifiedMultimodalModel
 from train import MultimodalNPZDataset, multimodal_collate, classification_loss, focal_loss, cox_partial_log_likelihood
 

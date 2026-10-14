@@ -35,10 +35,14 @@ results_*/
 *.aux
 *.log
 *.out
-*.pdf
 *.xdv
 *.fdb_latexmk
 *.fls
+
+# LaTeX outputs are ignored, but the manuscript figure PDFs are part of the
+# reproducibility package (the paper embeds them directly), so they are kept.
+!paper/figures/*.pdf
+!figures/*.pdf
 
 # OS
 .DS_Store
@@ -57,5 +61,14 @@ install_latex.sh
 *.code-workspace
 
 # Tracked exception: the JSON outputs behind the manuscript's reported
-# numbers are part of the reproducibility package (see Code Availability).
+# numbers are part of the reproducibility package (see Code Availability),
+# as is the raw detector simulation dump, which lets the metrics be
+# re-scored without re-running the 720-cohort job.
 !results/route_a/*.json
+!results/route_a/*.npz
+
+# CatBoost training logs
+catboost_info/
+
+# Figure verification renders (regenerable from the figure scripts)
+figJ_check.png

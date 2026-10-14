@@ -1,0 +1,201 @@
+{
+  "configs": {
+    "mrna": {
+      "n_features": 412,
+      "cv_acc_mean": 0.7291475506881752,
+      "cv_acc_sd": 0.03371328377555018,
+      "metabric_test_acc": 0.7281553398058253,
+      "metabric_test_macro_f1": 0.7109528714550236,
+      "tcga_acc_unrestricted": 0.7334293948126801,
+      "tcga_macro_f1_unrestricted": 0.5905310487734398,
+      "tcga_predicted_into_absent_class": 64,
+      "tcga_acc_restricted": 0.8054755043227666,
+      "tcga_macro_f1_restricted": 0.7676637588944258,
+      "tcga_acc_unrestricted_ci": [
+        0.7002881844380403,
+        0.7651296829971181
+      ],
+      "tcga_acc_restricted_ci": [
+        0.7752161383285303,
+        0.8342939481268011
+      ],
+      "tcga_macro_f1_restricted_ci": [
+        0.7247324765943259,
+        0.8076098507960247
+      ],
+      "per_class_recall_restricted": {
+        "LumA": 0.7817679558011049,
+        "LumB": 0.7226277372262774,
+        "Her2": 0.8809523809523809,
+        "Basal": 0.9754098360655737,
+        "Normal": 0.6774193548387096
+      },
+      "mcnemar_vs_mrna_unrestricted": {
+        "n01": 0,
+        "n10": 0,
+        "stat": 0.0,
+        "p": 1.0
+      },
+      "mcnemar_vs_mrna_restricted": {
+        "n01": 0,
+        "n10": 0,
+        "stat": 0.0,
+        "p": 1.0
+      }
+    },
+    "mrna+clinical_h": {
+      "n_features": 422,
+      "cv_acc_mean": 0.7343014651472547,
+      "cv_acc_sd": 0.039259076584093576,
+      "metabric_test_acc": 0.7524271844660194,
+      "metabric_test_macro_f1": 0.7347266203462048,
+      "tcga_acc_unrestricted": 0.7363112391930836,
+      "tcga_macro_f1_unrestricted": 0.599504792462565,
+      "tcga_predicted_into_absent_class": 61,
+      "tcga_acc_restricted": 0.8040345821325648,
+      "tcga_macro_f1_restricted": 0.7737643149240464,
+      "tcga_acc_unrestricted_ci": [
+        0.7031700288184438,
+        0.7694524495677233
+      ],
+      "tcga_acc_restricted_ci": [
+        0.7737752161383286,
+        0.8328530259365994
+      ],
+      "tcga_macro_f1_restricted_ci": [
+        0.7310915645611702,
+        0.813567242834859
+      ],
+      "per_class_recall_restricted": {
+        "LumA": 0.7734806629834254,
+        "LumB": 0.7372262773722628,
+        "Her2": 0.8571428571428571,
+        "Basal": 0.9754098360655737,
+        "Normal": 0.7096774193548387
+      },
+      "mcnemar_vs_mrna_unrestricted": {
+        "n01": 12,
+        "n10": 10,
+        "stat": 0.045454545454545456,
+        "p": 0.8311704095417625
+      },
+      "mcnemar_vs_mrna_restricted": {
+        "n01": 9,
+        "n10": 10,
+        "stat": 0.0,
+        "p": 1.0
+      }
+    },
+    "mrna+methylation": {
+      "n_features": 644,
+      "cv_acc_mean": 0.7291364510877608,
+      "cv_acc_sd": 0.020338415177746972,
+      "metabric_test_acc": 0.7233009708737864,
+      "metabric_test_macro_f1": 0.6912462601997486,
+      "tcga_acc_unrestricted": 0.7363112391930836,
+      "tcga_macro_f1_unrestricted": 0.5953799143697424,
+      "tcga_predicted_into_absent_class": 51,
+      "tcga_acc_restricted": 0.7867435158501441,
+      "tcga_macro_f1_restricted": 0.7465760202971218,
+      "tcga_acc_unrestricted_ci": [
+        0.7002881844380403,
+        0.7680115273775217
+      ],
+      "tcga_acc_restricted_ci": [
+        0.7550432276657061,
+        0.8170028818443804
+      ],
+      "tcga_macro_f1_restricted_ci": [
+        0.7029935875591744,
+        0.7856244932148361
+      ],
+      "per_class_recall_restricted": {
+        "LumA": 0.7596685082872928,
+        "LumB": 0.7153284671532847,
+        "Her2": 0.8809523809523809,
+        "Basal": 0.9508196721311475,
+        "Normal": 0.6451612903225806
+      },
+      "mcnemar_vs_mrna_unrestricted": {
+        "n01": 33,
+        "n10": 31,
+        "stat": 0.015625,
+        "p": 0.9005235503397742
+      },
+      "mcnemar_vs_mrna_restricted": {
+        "n01": 25,
+        "n10": 38,
+        "stat": 2.2857142857142856,
+        "p": 0.1305700181157361
+      }
+    },
+    "clinical_h+mrna+methylation": {
+      "n_features": 654,
+      "cv_acc_mean": 0.7317078585170933,
+      "cv_acc_sd": 0.02276215792820415,
+      "metabric_test_acc": 0.7475728155339806,
+      "metabric_test_macro_f1": 0.7115085106792792,
+      "tcga_acc_unrestricted": 0.7406340057636888,
+      "tcga_macro_f1_unrestricted": 0.6001512037215908,
+      "tcga_predicted_into_absent_class": 50,
+      "tcga_acc_restricted": 0.7910662824207493,
+      "tcga_macro_f1_restricted": 0.7602215169244224,
+      "tcga_acc_unrestricted_ci": [
+        0.7060518731988472,
+        0.7723703170028816
+      ],
+      "tcga_acc_restricted_ci": [
+        0.7593659942363112,
+        0.8198847262247838
+      ],
+      "tcga_macro_f1_restricted_ci": [
+        0.7165687782770772,
+        0.7983220346083066
+      ],
+      "per_class_recall_restricted": {
+        "LumA": 0.7541436464088398,
+        "LumB": 0.7299270072992701,
+        "Her2": 0.9047619047619048,
+        "Basal": 0.9590163934426229,
+        "Normal": 0.6774193548387096
+      },
+      "mcnemar_vs_mrna_unrestricted": {
+        "n01": 41,
+        "n10": 36,
+        "stat": 0.2077922077922078,
+        "p": 0.648503379652976
+      },
+      "mcnemar_vs_mrna_restricted": {
+        "n01": 32,
+        "n10": 42,
+        "stat": 1.0945945945945945,
+        "p": 0.2954554327459258
+      }
+    }
+  },
+  "n": {
+    "metabric_train_val": 1163,
+    "metabric_test": 206,
+    "tcga": 694
+  },
+  "tcga_classes_present": [
+    0,
+    1,
+    2,
+    4,
+    5
+  ],
+  "tcga_classes_absent": [
+    3
+  ],
+  "estimator": "StandardScaler -> LogisticRegression(C=0.01)",
+  "normalisation": "within-cohort rank -> normal scores",
+  "cv_protocol": "5-fold stratified on METABRIC train+val, seed 42",
+  "reference_original_flagship_69dim": {
+    "n_features": 713,
+    "cv_acc_mean": 0.7592089684771348,
+    "cv_acc_sd": 0.027888771370124167,
+    "metabric_test_acc": 0.7378640776699029,
+    "note": "clinical block is METABRIC-specific; has no external counterpart"
+  }
+}

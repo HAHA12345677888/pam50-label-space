@@ -1,0 +1,330 @@
+% ============================================================
+% Supplementary Material
+% ============================================================
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{float}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{natbib}
+
+\doublespacing
+
+\begin{document}
+
+\title{\textbf{Supplementary Material} \\
+Multimodal Integration of Clinical, Transcriptomic, and Epigenomic Features for Breast Cancer Molecular Subtyping}
+
+\author{Shuxing Liu et al.}
+\date{August 2026}
+\maketitle
+
+% ============================================================
+\section*{S1. Complete Feature Engineering Details}
+\label{supp:features}
+
+\subsection*{S1.1 Clinical Feature Encoding}
+
+Table~\ref{supp:tab:clinical} lists the 22 clinical variables from the METABRIC clinical\_patient\_wide and clinical\_sample\_wide CSVs, their encoding method, and resulting feature dimensions.
+
+\begin{table}[H]
+\centering
+\caption{Clinical variables and their encoding.}
+\label{supp:tab:clinical}
+\begin{tabular}{llll}
+\toprule
+\textbf{Variable} & \textbf{Type} & \textbf{Encoding} & \textbf{Dimensions} \\
+\midrule
+AGE\_AT\_DIAGNOSIS & Continuous & Z-score & 1 \\
+TUMOR\_SIZE & Continuous & Z-score & 1 \\
+LYMPH\_NODES\_EXAMINED\_POSITIVE & Continuous & Z-score & 1 \\
+NPI & Continuous & Z-score & 1 \\
+MUTATION\_COUNT & Continuous & Z-score & 1 \\
+TMB\_NONSYNONYMOUS & Continuous & Z-score & 1 \\
+OS\_MONTHS & Continuous & Z-score & 1 \\
+RFS\_MONTHS & Continuous & Z-score & 1 \\
+\midrule
+BREAST\_SURGERY & Categorical (2) & One-hot & 2 \\
+CELLULARITY & Categorical (3) & One-hot & 3 \\
+CHEMOTHERAPY & Categorical (2) & One-hot & 2 \\
+CLAUDIN\_SUBTYPE & Categorical (7) & One-hot & 7 \\
+ER\_IHC & Categorical (2) & One-hot & 2 \\
+HER2\_SNP6 & Categorical (4) & One-hot & 4 \\
+HISTOLOGICAL\_SUBTYPE & Categorical (8) & One-hot & 8 \\
+HORMONE\_THERAPY & Categorical (2) & One-hot & 2 \\
+INFERRED\_MENOPAUSAL\_STATE & Categorical (2) & One-hot & 2 \\
+LATERALITY & Categorical (2) & One-hot & 2 \\
+RADIO\_THERAPY & Categorical (2) & One-hot & 2 \\
+ER\_STATUS & Categorical (2) & One-hot & 2 \\
+HER2\_STATUS & Categorical (2) & One-hot & 2 \\
+PR\_STATUS & Categorical (2) & One-hot & 2 \\
+GRADE & Categorical (4) & One-hot & 4 \\
+ONCOTREE\_CODE & Categorical (8) & One-hot & 8 \\
+\midrule
+\textbf{Total} & & & \textbf{69} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection*{S1.2 Feature Dimensions Across Modalities}
+
+\begin{table}[H]
+\centering
+\caption{Feature dimensions for each modality.}
+\label{supp:tab:dims}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Modality} & \textbf{Raw Dimensions} & \textbf{Final Dimensions} \\
+\midrule
+Clinical & 22 variables & 69 \\
+mRNA expression & 412 genes & 412 \\
+Copy number alteration & 373 genes & 256 \\
+DNA methylation & 232 probes & 232 \\
+Somatic mutations & 173 genes & 173 \\
+\midrule
+\textbf{Total (all 5)} & & \textbf{1,142} \\
+\textbf{Selected 3} & & \textbf{713} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ============================================================
+\section*{S2. Comprehensive Model Comparison}
+\label{supp:tab:all_models}
+
+Table~\ref{supp:tab:full_comparison} provides the complete model comparison results including all evaluated algorithms, hyperparameter settings, and feature combinations.
+
+\begin{table}[H]
+\centering
+\caption{Complete model comparison with 5-fold cross-validation.}
+\label{supp:tab:full_comparison}
+\begin{tabular}{llcc}
+\toprule
+\textbf{Model} & \textbf{Features} & \textbf{CV Acc (\%)} & \textbf{Std} \\
+\midrule
+Majority class & -- & 35.6 & -- \\
+\midrule
+\multicolumn{4}{l}{\textit{Single-modality models}} \\
+LogReg C=0.01 & Clinical (69d) & 64.1 & 2.7 \\
+LogReg C=0.01 & mRNA (412d) & 73.8 & 1.6 \\
+LogReg C=0.01 & Methylation (232d) & 54.7 & 2.4 \\
+\midrule
+\multicolumn{4}{l}{\textit{Multi-modality models}} \\
+LogReg C=0.01 & Clin+mRNA (481d) & 74.5 & 1.9 \\
+LogReg C=0.01 & Clin+Methyl (301d) & 65.7 & 1.9 \\
+LogReg C=0.01 & mRNA+Methyl (644d) & 73.1 & 2.6 \\
+\textbf{LogReg C=0.01} & \textbf{Clin+mRNA+Methyl (713d)} & \textbf{75.3} & \textbf{2.6} \\
+LogReg C=0.01 & Clin+mRNA+CNA (737d) & 73.0 & 1.8 \\
+LogReg C=0.01 & Clin+mRNA+Mutat (654d) & 73.3 & 2.0 \\
+LogReg C=0.01 & All 5 (1142d) & 72.4 & 2.0 \\
+\midrule
+\multicolumn{4}{l}{\textit{Regularization sweep (Clin+mRNA+Methyl, 713d)}} \\
+LogReg C=0.001 & 713d & 73.9 & 2.7 \\
+LogReg C=0.01 & 713d & 75.3 & 2.6 \\
+LogReg C=0.1 & 713d & 74.1 & 2.3 \\
+LogReg C=1.0 & 713d & 72.9 & 2.1 \\
+LogReg C=10.0 & 713d & 72.4 & 1.9 \\
+Calibrated LogReg & 713d & 74.4 & 2.1 \\
+\midrule
+\multicolumn{4}{l}{\textit{Tree-based models (Clin+mRNA+Methyl, 713d)}} \\
+Random Forest & 713d & 72.4 & 2.4 \\
+XGBoost & 713d & 72.0 & 3.3 \\
+LightGBM & 713d & 71.0 & 3.1 \\
+CatBoost & 713d & 73.9 & 2.7 \\
+Extra Trees & 713d & 71.3 & 1.7 \\
+\midrule
+\multicolumn{4}{l}{\textit{Ensemble methods (713d)}} \\
+Soft-vote LR+GB+XGB & 713d & 72.6 & 2.8 \\
+Soft-vote LR+RF+GB & 713d & 72.5 & 2.8 \\
+\midrule
+\multicolumn{4}{l}{\textit{Transformer models (713d)}} \\
+LightTransformer (5-mod) & 713d & 68.5 & 1.8 \\
+TF (3-mod, d=64, 2L) & 713d & 68.5 & 1.8 \\
+TF (3-mod, d=128, 3L) & 713d & 70.7 & 2.1 \\
+Hybrid TF prob + LR & 713d & 74.8 & 2.7 \\
+TF-AE + LogReg & 713d & 73.7 & 2.0 \\
+Guided Transformer & 713d & 74.0 & 1.0 \\
+LR $\rightarrow$ Guided TF Cascade & 713d & 76.2 & 2.0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ============================================================
+\section*{S3. Feature Selection Analysis}
+\label{supp:fig:feature_selection}
+
+ANOVA F-test was used to rank features by discriminative power. Figure~\ref{supp:fig:fs} shows the cross-validation accuracy as a function of the number of top-ranked features for mRNA-only and mRNA+clinical+methylation models.
+
+Key observations:
+\begin{itemize}[nosep]
+  \item mRNA-only performance plateaus at approximately 200 genes (74.5\% CV)
+  \item With clinical+methylation, 200 mRNA genes achieve 75.5\% CV (slightly better than full 412 genes at 74.7\%)
+  \item Top discriminating mRNA genes: \textit{ACOT4} (F=130.8), \textit{A2ML1} (F=102.0), \textit{ABAT} (F=98.5), \textit{ACTR3B} (F=95.0)
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Feature selection results for different top-k values.}
+\label{supp:tab:feature_selection}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Model} & \textbf{Top-k genes} & \textbf{Total dims} & \textbf{CV Acc (\%)} \\
+\midrule
+mRNA only & 50 & 50 & 72.9 $\pm$ 2.1 \\
+mRNA only & 100 & 100 & 73.5 $\pm$ 2.3 \\
+mRNA only & 200 & 200 & 74.5 $\pm$ 2.1 \\
+mRNA only & 412 (all) & 412 & 73.8 $\pm$ 1.6 \\
+\midrule
+Clin+mRNA+Methyl & 50 & 351 & 73.0 $\pm$ 2.4 \\
+Clin+mRNA+Methyl & 100 & 401 & 74.0 $\pm$ 2.2 \\
+Clin+mRNA+Methyl & 200 & 501 & 75.5 $\pm$ 1.2 \\
+Clin+mRNA+Methyl & 412 (all) & 713 & 75.3 $\pm$ 2.6 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ============================================================
+\section*{S4. Luminal A vs. Luminal B Confusion Analysis}
+\label{supp:luma_lumb}
+
+The dominant classification error is confusion between Luminal A and Luminal B subtypes (Table~\ref{supp:tab:luma_lumb}). These subtypes share ER-positive status and differ primarily in proliferation-related gene expression.
+
+\begin{table}[H]
+\centering
+\caption{Luminal A vs. Luminal B misclassification analysis on the METABRIC test set.}
+\label{supp:tab:luma_lumb}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Direction} & \textbf{Count / Total} & \textbf{Rate (\%)} \\
+\midrule
+Luminal A $\rightarrow$ Luminal B & 9 / 74 & 12.2 \\
+Luminal B $\rightarrow$ Luminal A & 12 / 50 & 24.0 \\
+\midrule
+\textbf{Average confidence when misclassified} & & \\
+P(LumA) when LumB$\rightarrow$LumA & 0.689 & \\
+P(LumB) when LumA$\rightarrow$LumB & 0.586 & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The high confidence score (0.689) when predicting Luminal B as Luminal A suggests the model has difficulty detecting the subtle proliferation signature that distinguishes these subtypes.
+
+% ============================================================
+\section*{S5. McNemar's Statistical Tests}
+\label{supp:mcnemar}
+
+McNemar's test was used to compare the classification decisions of different models on the held-out test set (n=206).
+
+\begin{table}[H]
+\centering
+\caption{McNemar's test comparing LogReg models with different regularization.}
+\label{supp:tab:mcnemar}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Comparison} & $\chi^2$ & \textbf{p-value} \\
+\midrule
+LogReg C=0.01 vs C=0.1 & 0.083 & 0.773 \\
+LogReg C=0.01 vs C=1.0 & 0.063 & 0.803 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+None of the comparisons reach statistical significance ($p < 0.05$), consistent with the small test set size (n=206). The 5-fold CV results (Table~\ref{supp:tab:full_comparison}) provide more reliable model comparison.
+
+% ============================================================
+\section*{S6. TCGA External Validation Details}
+\label{supp:tcga}
+
+\subsection*{S6.1 Data Acquisition}
+
+TCGA-BRCA data were obtained via the cBioPortal API. The Firehose Legacy study (brca\_tcga) contains 1,108 patients. RNA-seq V2 expression data were available for 1,100 samples, with PAM50 annotations for 987 patients. Clinical and survival data were retrieved separately from the patient-level clinical endpoint.
+
+\subsection*{S6.2 Gene Mapping}
+
+All 412 METABRIC mRNA genes were successfully mapped to Entrez Gene IDs. Gene expression values from TCGA RNA-seq V2 were log2-transformed and rank-normalized within the TCGA platform (Equation~1 in the main text).
+
+\subsection*{S6.3 Class Distribution Shift}
+
+\begin{table}[H]
+\centering
+\caption{Subtype distribution comparison between METABRIC and TCGA-BRCA.}
+\label{supp:tab:dist_shift}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Subtype} & \textbf{METABRIC (\%)} & \textbf{TCGA (\%)} \\
+\midrule
+Luminal A & 35.7 & 50.9 \\
+Luminal B & 23.9 & 20.2 \\
+HER2-enriched & 12.5 & 7.9 \\
+Claudin-low & 9.5 & 0.0 (not annotated) \\
+Basal-like & 10.4 & 17.4 \\
+Normal-like & 7.9 & 3.6 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The substantial distribution shift, particularly the absence of claudin-low annotations and the higher proportion of Luminal A in TCGA, explains part of the macro F1-score drop from 0.703 (METABRIC) to 0.585 (TCGA).
+
+\subsection*{S6.4 TCGA Survival Analysis}
+
+On 966 TCGA patients with available survival data (133 death events):
+\begin{itemize}[nosep]
+  \item Overall C-Index: 0.586 (log-rank $p = 0.013$)
+  \item 3-year C-Index: 0.617 (56 events)
+  \item 5-year C-Index: 0.596 (85 events)
+  \item 10-year C-Index: 0.587 (122 events)
+\end{itemize}
+
+% ============================================================
+\section*{S7. SHAP Feature Importance}
+\label{supp:shap}
+
+Table~\ref{supp:tab:shap} lists the complete SHAP top-20 feature importance rankings.
+
+\begin{table}[H]
+\centering
+\caption{Top 20 features by mean absolute SHAP value.}
+\label{supp:tab:shap}
+\begin{tabular}{clll}
+\toprule
+\textbf{Rank} & \textbf{Feature} & \textbf{Modality} & \textbf{Mean |SHAP|} \\
+\midrule
+1 & THREEGENE\_ER+/HER2- High Prolif & Clinical & 0.0614 \\
+2 & THREEGENE\_ER+/HER2- Low Prolif & Clinical & 0.0579 \\
+3 & ER\_STATUS\_Positive & Clinical & 0.0511 \\
+4 & ER\_STATUS\_Negative & Clinical & 0.0511 \\
+5 & ACP7 & mRNA & 0.0505 \\
+6 & THREEGENE\_ER-/HER2- & Clinical & 0.0473 \\
+7 & ACTG2 & mRNA & 0.0467 \\
+8 & ACOT4 & mRNA & 0.0436 \\
+9 & ADM & mRNA & 0.0425 \\
+10 & ADCY3 & mRNA & 0.0416 \\
+11 & ABCB1 & mRNA & 0.0407 \\
+12 & ADRB2 & mRNA & 0.0374 \\
+13 & ADORA2B & mRNA & 0.0373 \\
+14 & ACKR1 & mRNA & 0.0356 \\
+15 & ACADSB & mRNA & 0.0355 \\
+16 & ACTR3B & mRNA & 0.0345 \\
+17 & ADORA3 & mRNA & 0.0342 \\
+18 & ABTB3 & mRNA & 0.0341 \\
+19 & ADCY9 & mRNA & 0.0330 \\
+20 & ADGRE5 & mRNA & 0.0321 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ============================================================
+\section*{S8. Comprehensive Results Table}
+\label{supp:tune_results}
+
+The complete configuration comparison table (24 experiment configurations) is provided as a separate CSV file (\texttt{tune\_results.csv}).
+
+\end{document}

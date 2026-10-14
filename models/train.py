@@ -1,5 +1,5 @@
 import sys, os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__) if '__file__' in globals() else os.getcwd(), '..'))
 
 import os
 import argparse
@@ -18,7 +18,7 @@ from lifelines.utils import concordance_index
 
 # Import your model
 import sys, os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__) if "__file__" in globals() else os.getcwd(), ".."))
 from models.unified_model import UnifiedMultimodalModel
 from models.survival_head import cox_partial_log_likelihood
 from models.classification_head import classification_loss, focal_loss

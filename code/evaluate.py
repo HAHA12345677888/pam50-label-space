@@ -1,5 +1,5 @@
 import sys, os
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)) if '__file__' in globals() else os.getcwd())
 
 import torch
 import numpy as np
@@ -51,9 +51,13 @@ def evaluate_model(model_path, data_path, output_dir="results", num_classes=6):
         soft_key = "pathway_attention.soft_membership"
         use_soft = soft_key in state_dict
         import os
-        soft_path = "../data/soft_module_mask.npz"
-        hard_path = "../data/pathway_mask.npz"
+        # Resolve data dir relative to the repo root (parent of code/)
+        repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        soft_path = os.path.join(repo_root, "data", "soft_module_mask.npz")
+        hard_path = os.path.join(repo_root, "data", "pathway_mask.npz")
         mask_path = soft_path if use_soft and os.path.exists(soft_path) else hard_path
+        if not os.path.exists(mask_path):
+            raise FileNotFoundError(f"Pathway mask not found: {mask_path}")
         model.setup_pathway_attention(mask_path, use_soft_membership=use_soft)
     # Initialize new modules if checkpoint expects them
     if hasattr(model, "setup_cross_modal_attention"):

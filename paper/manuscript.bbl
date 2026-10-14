@@ -1,0 +1,132 @@
+\begin{thebibliography}{22}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Alexandari et~al.(2020)Alexandari, Kundaje, and Shrikumar]{alexandari2020maximum}
+Amr Alexandari, Anshul Kundaje, and Avanti Shrikumar.
+\newblock Maximum likelihood with bias-corrected calibration is hard-to-beat at label shift adaptation.
+\newblock In \emph{Proceedings of the 37th International Conference on Machine Learning}, volume 119 of \emph{Proceedings of Machine Learning Research}, pages 222--232, 2020.
+
+\bibitem[Azizzadenesheli et~al.(2019)Azizzadenesheli, Liu, Yang, and Anandkumar]{azizzadenesheli2019regularized}
+Kamyar Azizzadenesheli, Anqi Liu, Fanny Yang, and Animashree Anandkumar.
+\newblock Regularized learning for domain adaptation under label shifts.
+\newblock In \emph{International Conference on Learning Representations}, 2019.
+
+\bibitem[Bastien et~al.(2012)Bastien, Rodr{\'\i}guez-Lescure, Ebbert, Prat, Munarriz, Rowe, Miller, Ruiz-Borrego, Anderson, Lyons, et~al.]{bastien2012pam50}
+Roy~RL Bastien, {\'A}lvaro Rodr{\'\i}guez-Lescure, Mark~TW Ebbert, Aleix Prat, Blanca Munarriz, Penny Rowe, Paul Miller, Manuel Ruiz-Borrego, Dave Anderson, Bonnie Lyons, et~al.
+\newblock {PAM50} breast cancer subtyping by {RT-qPCR} and concordance with standard clinical molecular markers.
+\newblock \emph{BMC Medical Genomics}, 5\penalty0 (1):\penalty0 44, 2012.
+\newblock \doi{10.1186/1755-8794-5-44}.
+
+\bibitem[Chaudhary et~al.(2018)Chaudhary, Poirion, Lu, and Garmire]{chaudhary2018deep}
+Kumardeep Chaudhary, Olivier~B Poirion, Liangqun Lu, and Lana~X Garmire.
+\newblock Deep learning-based multi-omics integration robustly predicts survival in liver cancer.
+\newblock \emph{Clinical Cancer Research}, 24\penalty0 (6):\penalty0 1248--1259, 2018.
+\newblock \doi{10.1158/1078-0432.CCR-17-0853}.
+
+\bibitem[Curtis et~al.(2012)Curtis, Shah, Chin, Turashvili, Rueda, Dunning, Speed, Lynch, Samarajiwa, Yuan, et~al.]{curtis2012genomic}
+Christina Curtis, Sohrab~P Shah, Suet-Feung Chin, Gulisa Turashvili, Oscar~M Rueda, Mark~J Dunning, Doug Speed, Andy~G Lynch, Shamith Samarajiwa, Yinyin Yuan, et~al.
+\newblock The genomic and transcriptomic architecture of 2,000 breast tumours reveals novel subgroups.
+\newblock \emph{Nature}, 486\penalty0 (7403):\penalty0 346--352, 2012.
+\newblock \doi{10.1038/nature10983}.
+
+\bibitem[Garg et~al.(2020)Garg, Wu, Balakrishnan, and Lipton]{garg2020unified}
+Saurabh Garg, Yifan Wu, Sivaraman Balakrishnan, and Zachary Lipton.
+\newblock A unified view of label shift estimation.
+\newblock In \emph{Advances in Neural Information Processing Systems}, volume~33, pages 3290--3300, 2020.
+
+\bibitem[Garg et~al.(2022)Garg, Balakrishnan, and Lipton]{garg2022open}
+Saurabh Garg, Sivaraman Balakrishnan, and Zachary Lipton.
+\newblock Domain adaptation under open set label shift.
+\newblock In \emph{Advances in Neural Information Processing Systems}, volume~35, pages 22531--22546, 2022.
+
+\bibitem[Goldhirsch et~al.(2013)Goldhirsch, Winer, Coates, Gelber, Piccart-Gebhart, Th{\"u}rlimann, Senn, and members]{goldhirsch2013personalizing}
+A~Goldhirsch, EP~Winer, AS~Coates, RD~Gelber, M~Piccart-Gebhart, B~Th{\"u}rlimann, H-J Senn, and Panel members.
+\newblock Personalizing the treatment of women with early breast cancer: highlights of the st gallen international expert consensus on the primary therapy of early breast cancer 2013.
+\newblock \emph{Annals of Oncology}, 24\penalty0 (9):\penalty0 2206--2223, 2013.
+\newblock \doi{10.1093/annonc/mdt303}.
+
+\bibitem[Haybittle et~al.(1982)Haybittle, Blamey, Elston, Johnson, Doyle, Campbell, Nicholson, and Griffiths]{haybittle1982prognostic}
+JL~Haybittle, RW~Blamey, CW~Elston, J~Johnson, PJ~Doyle, FC~Campbell, RI~Nicholson, and K~Griffiths.
+\newblock A prognostic index in primary breast cancer.
+\newblock \emph{British Journal of Cancer}, 45\penalty0 (3):\penalty0 361--366, 1982.
+\newblock \doi{10.1038/bjc.1982.62}.
+
+\bibitem[Lipton et~al.(2018)Lipton, Wang, and Smola]{lipton2018detecting}
+Zachary Lipton, Yu-Xiang Wang, and Alexander Smola.
+\newblock Detecting and correcting for label shift with black box predictors.
+\newblock In \emph{Proceedings of the 35th International Conference on Machine Learning}, volume~80 of \emph{Proceedings of Machine Learning Research}, pages 3122--3130, 2018.
+
+\bibitem[Lundberg and Lee(2017)]{lundberg2017unified}
+Scott~M Lundberg and Su-In Lee.
+\newblock A unified approach to interpreting model predictions.
+\newblock \emph{Advances in Neural Information Processing Systems}, 30:\penalty0 4765--4774, 2017.
+
+\bibitem[Network(2012)]{cancer2012comprehensive}
+Cancer Genome~Atlas Network.
+\newblock Comprehensive molecular portraits of human breast tumours.
+\newblock \emph{Nature}, 490\penalty0 (7418):\penalty0 61--70, 2012.
+\newblock \doi{10.1038/nature11412}.
+
+\bibitem[Parker et~al.(2009)Parker, Mullins, Cheang, Leung, Voduc, Vickery, Davies, Fauron, He, Hu, et~al.]{parker2009supervised}
+Joel~S Parker, Michael Mullins, Maggie~CU Cheang, Samuel Leung, David Voduc, Tammy Vickery, Sherri Davies, Christiane Fauron, Xiaping He, Zhiyong Hu, et~al.
+\newblock Supervised risk predictor of breast cancer based on intrinsic subtypes.
+\newblock \emph{Journal of Clinical Oncology}, 27\penalty0 (8):\penalty0 1160--1167, 2009.
+\newblock \doi{10.1200/JCO.2008.18.1370}.
+
+\bibitem[Pasculli et~al.(2018)Pasculli, Barbano, and Parrella]{pasculli2018epigenetics}
+Barbara Pasculli, Raffaela Barbano, and Paola Parrella.
+\newblock Epigenetics of breast cancer: Biology and clinical implication in the era of precision medicine.
+\newblock \emph{Seminars in Cancer Biology}, 51:\penalty0 22--35, 2018.
+\newblock \doi{10.1016/j.semcancer.2018.01.007}.
+
+\bibitem[Pedregosa et~al.(2011)Pedregosa, Varoquaux, Gramfort, Michel, Thirion, Grisel, Blondel, Prettenhofer, Weiss, Dubourg, et~al.]{pedregosa2011scikit}
+Fabian Pedregosa, Ga{\"e}l Varoquaux, Alexandre Gramfort, Vincent Michel, Bertrand Thirion, Olivier Grisel, Mathieu Blondel, Peter Prettenhofer, Ron Weiss, Vincent Dubourg, et~al.
+\newblock Scikit-learn: Machine learning in python.
+\newblock \emph{Journal of Machine Learning Research}, 12:\penalty0 2825--2830, 2011.
+
+\bibitem[Perou et~al.(2000)Perou, S{\o}rlie, Eisen, van~de Rijn, Jeffrey, Rees, Pollack, Ross, Johnsen, Akslen, et~al.]{perou2000molecular}
+Charles~M Perou, Therese S{\o}rlie, Michael~B Eisen, Matt van~de Rijn, Stefanie~S Jeffrey, Christian~A Rees, Jonathan~R Pollack, Douglas~T Ross, Hilde Johnsen, Lars~A Akslen, et~al.
+\newblock Molecular portraits of human breast tumours.
+\newblock \emph{Nature}, 406\penalty0 (6797):\penalty0 747--752, 2000.
+\newblock \doi{10.1038/35021093}.
+
+\bibitem[Prat et~al.(2010)Prat, Parker, Karginova, Fan, Livasy, Herschkowitz, He, and Perou]{prat2010phenotypic}
+Aleix Prat, Joel~S Parker, Olga Karginova, Cheng Fan, Chad Livasy, Jason~I Herschkowitz, Xiaping He, and Charles~M Perou.
+\newblock Phenotypic and molecular characterization of the claudin-low intrinsic subtype of breast cancer.
+\newblock \emph{Breast Cancer Research}, 12\penalty0 (5):\penalty0 1--18, 2010.
+\newblock \doi{10.1186/bcr2635}.
+
+\bibitem[Prat et~al.(2014)Prat, Bianchini, Thomas, Belousov, Cheang, Koehler, G{\'o}mez, Semiglazov, Eiermann, Tjulandin, et~al.]{prat2014research}
+Aleix Prat, Giampaolo Bianchini, Marlene Thomas, Anton Belousov, Maggie~CU Cheang, Ann Koehler, Patricia G{\'o}mez, Vladimir Semiglazov, Wolfgang Eiermann, Sergei Tjulandin, et~al.
+\newblock Research-based {PAM50} subtype predictor identifies higher responses and improved survival outcomes in {HER2}-positive breast cancer in the {NOAH} study.
+\newblock \emph{Clinical Cancer Research}, 20\penalty0 (2):\penalty0 511--521, 2014.
+\newblock \doi{10.1158/1078-0432.CCR-13-0239}.
+
+\bibitem[Saerens et~al.(2002)Saerens, Latinne, and Decaestecker]{saerens2002adjusting}
+Marco Saerens, Patrice Latinne, and Christine Decaestecker.
+\newblock Adjusting the outputs of a classifier to new a priori probabilities: a simple procedure.
+\newblock \emph{Neural Computation}, 14\penalty0 (1):\penalty0 21--41, 2002.
+\newblock \doi{10.1162/089976602753284446}.
+
+\bibitem[Sharifi-Noghabi et~al.(2019)Sharifi-Noghabi, Zolotareva, Collins, and Ester]{sharifinoghabi2019moli}
+Hossein Sharifi-Noghabi, Olga Zolotareva, Colin~C Collins, and Martin Ester.
+\newblock {MOLI}: multi-omics late integration with deep neural networks for drug response prediction.
+\newblock \emph{Bioinformatics}, 35\penalty0 (14):\penalty0 i501--i509, 2019.
+\newblock \doi{10.1093/bioinformatics/btz318}.
+
+\bibitem[Tachet~des Combes et~al.(2020)Tachet~des Combes, Zhao, Wang, and Gordon]{tachetdescombes2020domain}
+Remi Tachet~des Combes, Han Zhao, Yu-Xiang Wang, and Geoffrey~J. Gordon.
+\newblock Domain adaptation with conditional distribution matching and generalized label shift.
+\newblock In \emph{Advances in Neural Information Processing Systems}, volume~33, pages 19276--19289, 2020.
+
+\bibitem[Wang et~al.(2014)Wang, Mezlini, Demir, Fiume, Tu, Brudno, Haibe-Kains, and Goldenberg]{wang2014similarity}
+Bo~Wang, Aziz~M Mezlini, Feyyaz Demir, Marc Fiume, Zhuowen Tu, Michael Brudno, Benjamin Haibe-Kains, and Anna Goldenberg.
+\newblock Similarity network fusion for aggregating data types on a genomic scale.
+\newblock \emph{Nature Methods}, 11\penalty0 (3):\penalty0 333--337, 2014.
+\newblock \doi{10.1038/nmeth.2810}.
+
+\end{thebibliography}

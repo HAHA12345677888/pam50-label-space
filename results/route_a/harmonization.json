@@ -1,0 +1,47 @@
+{
+  "harmonized_clinical_dims": [
+    "AGE",
+    "STAGE",
+    "ER_NEG",
+    "ER_POS",
+    "HER2_NEG",
+    "HER2_POS",
+    "PR_NEG",
+    "PR_POS",
+    "MENO_PRE",
+    "MENO_POST"
+  ],
+  "metabric": {
+    "train": 958,
+    "val": 205,
+    "test": 206
+  },
+  "tcga_n": 694,
+  "tcga_class_counts": {
+    "0": 362,
+    "1": 137,
+    "2": 42,
+    "4": 122,
+    "5": 31
+  },
+  "tcga_classes_present": [
+    0,
+    1,
+    2,
+    4,
+    5
+  ],
+  "tcga_classes_absent": [
+    3
+  ],
+  "methylation_genes_in_panel": 232,
+  "methylation_genes_measured_on_target": 209,
+  "methylation_genes_unmeasured_on_target": 23,
+  "mrna_genes_in_panel": 412,
+  "mrna_genes_symbol_matched": 412,
+  "mrna_genes_constant_on_target": 10,
+  "tcga_age_missing": 21,
+  "tcga_stage_missing": 31,
+  "neutral_value_policy": "unmeasured or constant feature -> normal score 0",
+  "note": "rank->normal scores computed within each cohort, label-free"
+}
