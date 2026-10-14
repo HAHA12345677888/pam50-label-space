@@ -180,8 +180,10 @@
 - [x] **DONE** — both manuscripts point at the real repository
       `github.com/HAHA12345677888/pam50-label-space` (created 2026-10-14, public). The earlier
       `HAHA1122344/breast-cancer-multimodal-transformer` URL is no longer referenced by either
-      manuscript. The repository is populated and public — verified via the API: 29 commits,
-      167 files, `main` at `f910734`.
+      manuscript. The repository is populated and public — confirm with
+      `GET /repos/HAHA12345677888/pam50-label-space` rather than from this line, which
+      deliberately records neither the head SHA nor a file count because every push
+      invalidates both.
 - [ ] Write cover letter — lead with the label-space finding, not the classifier
 - [ ] Prepare highlights (3–5 bullets)
 - [ ] Consider submitting `data/` gene panels as supplementary data
