@@ -21,18 +21,29 @@
 > from this note, since every rebuild changes it:
 > `python -c "import pypdfium2 as p;print(len(p.PdfDocument('paper/manuscript.pdf')),'pages')"`.
 
-> **Code-availability gap — must be closed before submission.** Both manuscripts now point at
-> `github.com/HAHA12345677888/pam50-label-space`. That repository **exists, is public, and is empty**
-> — verified by API: `GET /repos/.../commits` returns 409 "Git Repository is empty" and the branch
-> list is `[]`. Nothing has been pushed, so a reviewer following the link today finds no code at all.
-> The local branch is ahead of the old `origin` and has never been pushed to the new URL. Push
-> before submitting — see the residue section below. Four earlier problems are fixed by this
-> change: the old target `HAHA1122344/breast-cancer-multimodal-transformer` is no longer
-> referenced (it existed and was public, but served none of the reported results),
-> `manuscript_ieee.tex` no longer pins the obsolete commit `24c3ed9`, and both Code
-> availability statements were moved to future tense — they previously read "is available"
-> and "contains the analysis scripts ... used for the reported results", which an empty
-> repository cannot support. Do not restore the present tense until the push lands.
+> **Code availability — CLOSED.** Both manuscripts point at
+> `github.com/HAHA12345677888/pam50-label-space`, and that repository is public and populated:
+> `GET /repos/HAHA12345677888/pam50-label-space` returns HTTP 200 with `private: false`, and
+> its recursive tree carries the analysis scripts (`scripts/route_a_*.py`), the derived result
+> files (`results/route_a/*.json`), the figure PDFs, and the figure generators
+> (`paper/make_fig*.py`). Read the live counts, sizes and head SHA off the API rather than
+> from this note — every push changes them. The Code availability statements are therefore in
+> the present tense ("are available at GitHub"), and that tense is now supported by the link.
+> The old target `HAHA1122344/breast-cancer-multimodal-transformer` is no longer referenced
+> (it existed and was public, but served none of the reported results), and
+> `manuscript_ieee.tex` no longer pins the obsolete commit `24c3ed9`.
+>
+> If the repository is ever made private or renamed, revert both statements to the future
+> tense on the same day — an unqualified "are available" against a dead link is the defect
+> this note exists to prevent.
+>
+> Note for the record: `data/*.npz` as published also contain a `patient_ids` array of
+> METABRIC identifiers (`MB-####`) alongside `durations` and `events`, so survival outcomes
+> are associated with sample IDs in a public repository. Those identifiers and outcomes are
+> already public through cBioPortal, and both Data availability statements direct
+> redistribution to the terms of the source repositories, so this is not a new disclosure —
+> but it is a deliberate choice worth re-confirming against the user's institutional
+> expectations before submission.
 
 ---
 
@@ -169,7 +180,8 @@
 - [x] **DONE** — both manuscripts point at the real repository
       `github.com/HAHA12345677888/pam50-label-space` (created 2026-10-14, public). The earlier
       `HAHA1122344/breast-cancer-multimodal-transformer` URL is no longer referenced by either
-      manuscript. **Pending: nothing has been pushed to it yet** — see the gap note at the top.
+      manuscript. The repository is populated and public — verified via the API: 29 commits,
+      167 files, `main` at `f910734`.
 - [ ] Write cover letter — lead with the label-space finding, not the classifier
 - [ ] Prepare highlights (3–5 bullets)
 - [ ] Consider submitting `data/` gene panels as supplementary data
@@ -334,25 +346,26 @@ label-space finding that became the paper's main line.
       "Before Submission".
 
 ## Pre-submission residue
-- [ ] **The code is committed locally but not pushed.** The working tree is clean and the local `main`
-      branch is ahead of the remote tip `46b5b95`. `git log --oneline 46b5b95..HEAD` is the
-      authoritative list and count of what is unpushed — this line deliberately does not enumerate
-      the commits or hardcode a SHA, because either would go stale with the next commit. The
-      unpushed work covers, at the level of themes rather than commit messages: the multimodal
-      external validation and harmonized TCGA cohort, the corrected detector scoring and its
-      provenance audit, the submission-checklist updates, the publish helper, and the fixes to the
-      five defects found in review.
+- [x] **DONE** — the code is pushed and public. The working tree is clean and `main` on
+      `github.com/HAHA12345677888/pam50-label-space` sits at the same commit as the local
+      branch head. Do not quote a commit SHA or count here: both go stale with the next push,
+      so verify with the API (`GET /repos/HAHA12345677888/pam50-label-space` and
+      `/commits`) instead. The published work covers, at the level of themes rather than commit
+      messages: the multimodal external validation and harmonized TCGA cohort, the corrected
+      detector scoring and its provenance audit, the submission-checklist updates, the publish
+      helper, and the fixes to the five defects found in review.
 
       Note `publish_github.sh` only exists from the commit that added it onward, so a checkout that
       predates that commit will not have the helper.
 
-      Two external blockers, both needing the user:
-      1. No GitHub credential is configured for this workspace, so no push can authenticate. Add one
-         under **Customize -> Credentials -> Add Credential** (a PAT with `public_repo` or `repo`).
-      2. **RESOLVED** — the target repository now exists: `HAHA12345677888/pam50-label-space`,
-         created 2026-10-14 through the web UI, public, with no README and no commits (so the first
-         push is a clean fast-forward with no history to reconcile). It is still **empty**, so the
-         remaining blocker is the push itself, not the repository.
+      Both external blockers are now cleared:
+      1. **RESOLVED** — a GitHub credential was supplied and the push authenticated. Do not
+         record a token value in this file: it is versioned and published in the repository. If
+         one is ever pasted into a transcript, treat it as disclosed and revoke it in GitHub
+         settings the same day.
+      2. **RESOLVED** — the target repository `HAHA12345677888/pam50-label-space` exists, is
+         public, and has received this history (`main` on the remote equals the local branch
+         head).
 
       The remote URL could not be repointed from inside this workspace: `.git/config` is a protected
       path and the sandbox refuses the write. `./publish_github.sh` works around that — it reads the
@@ -380,7 +393,7 @@ label-space finding that became the paper's main line.
       the old repository. To repoint it, run from your own terminal:
       `git remote set-url origin https://github.com/HAHA12345677888/pam50-label-space.git`
 - [ ] Zenodo DOI is promised in both code-availability statements but not yet minted; mint it from
-      the archived GitHub snapshot after the push above, then edit the two statements separately —
+      the now-published GitHub repository, then edit the two statements separately —
       they no longer read the same. `manuscript.tex` says "A versioned archive with a citable DOI
       will be deposited before publication."; `manuscript_ieee.tex` says "A versioned snapshot will
       be archived at Zenodo with a DOI prior to submission". Replace the sentence with the minted
