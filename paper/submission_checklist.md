@@ -26,9 +26,13 @@
 > — verified by API: `GET /repos/.../commits` returns 409 "Git Repository is empty" and the branch
 > list is `[]`. Nothing has been pushed, so a reviewer following the link today finds no code at all.
 > The local branch is ahead of the old `origin` and has never been pushed to the new URL. Push
-> before submitting — see the residue section below. Three earlier problems are fixed by this
-> change: the old target `HAHA1122344/breast-cancer-multimodal-transformer` carried only a
-> stale result set, and `manuscript_ieee.tex` no longer pins the obsolete commit `24c3ed9`.
+> before submitting — see the residue section below. Four earlier problems are fixed by this
+> change: the old target `HAHA1122344/breast-cancer-multimodal-transformer` is no longer
+> referenced (it existed and was public, but served none of the reported results),
+> `manuscript_ieee.tex` no longer pins the obsolete commit `24c3ed9`, and both Code
+> availability statements were moved to future tense — they previously read "is available"
+> and "contains the analysis scripts ... used for the reported results", which an empty
+> repository cannot support. Do not restore the present tense until the push lands.
 
 ---
 
