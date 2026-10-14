@@ -10,8 +10,8 @@ echo "=========================================="
 echo "Cloning repository..."
 echo "=========================================="
 cd /content
-git clone https://github.com/HAHA1122344/breast-cancer-multimodal-transformer.git
-cd breast-cancer-multimodal-transformer
+git clone https://github.com/HAHA12345677888/pam50-label-space.git
+cd pam50-label-space
 
 echo "=========================================="
 echo "Starting training..."

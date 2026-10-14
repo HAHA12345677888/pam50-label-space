@@ -25,11 +25,11 @@ def main():
         "Installing dependencies")
     
     # Clone repository
-    run("cd /content && git clone https://github.com/HAHA1122344/breast-cancer-multimodal-transformer.git",
+    run("cd /content && git clone https://github.com/HAHA12345677888/pam50-label-space.git",
         "Cloning repository")
     
     # Start training
-    os.chdir("/content/breast-cancer-multimodal-transformer/code")
+    os.chdir("/content/pam50-label-space/code")
     
     run("python train.py "
         "--train_npz ../data/train.npz "

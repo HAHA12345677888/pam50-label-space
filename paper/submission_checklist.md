@@ -21,16 +21,14 @@
 > from this note, since every rebuild changes it:
 > `python -c "import pypdfium2 as p;print(len(p.PdfDocument('paper/manuscript.pdf')),'pages')"`.
 
-> **Code-availability gap — must be closed before submission.** The Code availability statement in
-> both manuscripts points at `github.com/HAHA1122344/breast-cancer-multimodal-transformer`, which
-> is public and resolves. But the pushed tip `46b5b95` predates the current work, so a reviewer
-> following that link finds an older and different result set. Compare with
-> `git rev-list --count origin/main..HEAD` rather than a count quoted here. Confirmed absent from the
-> pushed tree: `results/route_a/multimodal_external.json`, `results/route_a/detector_v2.json`,
-> `results/route_a/numbers_audit.json`, `scripts/route_a_step17_detector_v2.py`, and the figure
-> generator for `figJ`. The statement's claim that the repository "contains the analysis scripts,
-> the derived result files, and the figure generators used for the reported results" is not
-> currently true of the public copy. Push before submitting — see the residue section below.
+> **Code-availability gap — must be closed before submission.** Both manuscripts now point at
+> `github.com/HAHA12345677888/pam50-label-space`. That repository **exists, is public, and is empty**
+> — verified by API: `GET /repos/.../commits` returns 409 "Git Repository is empty" and the branch
+> list is `[]`. Nothing has been pushed, so a reviewer following the link today finds no code at all.
+> The local branch is ahead of the old `origin` and has never been pushed to the new URL. Push
+> before submitting — see the residue section below. Three earlier problems are fixed by this
+> change: the old target `HAHA1122344/breast-cancer-multimodal-transformer` carried only a
+> stale result set, and `manuscript_ieee.tex` no longer pins the obsolete commit `24c3ed9`.
 
 ---
 
@@ -164,9 +162,10 @@
       Sciences, Universiti Sains Malaysia, Kubang Kerian, Kelantan) and the corresponding-author
       email in the `\author{}` block and in the Declarations.
 - [ ] Add ORCID (corresponding-author email is now present in both manuscripts)
-- [x] **DONE** — no `[username]` placeholder remains; both manuscripts point at the real public
-      repository `github.com/HAHA1122344/breast-cancer-multimodal-transformer`. If the code moves
-      to the `HAHA12345677888` account, update the `\href` in both files and recompile.
+- [x] **DONE** — both manuscripts point at the real repository
+      `github.com/HAHA12345677888/pam50-label-space` (created 2026-10-14, public). The earlier
+      `HAHA1122344/breast-cancer-multimodal-transformer` URL is no longer referenced by either
+      manuscript. **Pending: nothing has been pushed to it yet** — see the gap note at the top.
 - [ ] Write cover letter — lead with the label-space finding, not the classifier
 - [ ] Prepare highlights (3–5 bullets)
 - [ ] Consider submitting `data/` gene panels as supplementary data
@@ -346,12 +345,10 @@ label-space finding that became the paper's main line.
       Two external blockers, both needing the user:
       1. No GitHub credential is configured for this workspace, so no push can authenticate. Add one
          under **Customize -> Credentials -> Add Credential** (a PAT with `public_repo` or `repo`).
-      2. The intended remote `HAHA12345677888/breast-cancer-multimodal-transformer` **does not exist**
-         — `GET /repos/HAHA12345677888/...` returns 404. The account itself exists (14 public repos).
-         The repository name `breast-cancer-multimodal-transformer` is currently occupied only by
-         `HAHA1122344/...`, which is where `origin` still points.
-         Create the repo on the target account, or confirm that the existing `HAHA1122344` repository
-         (already public, carrying the earlier label-space code and results) is the intended target.
+      2. **RESOLVED** — the target repository now exists: `HAHA12345677888/pam50-label-space`,
+         created 2026-10-14 through the web UI, public, with no README and no commits (so the first
+         push is a clean fast-forward with no history to reconcile). It is still **empty**, so the
+         remaining blocker is the push itself, not the repository.
 
       The remote URL could not be repointed from inside this workspace: `.git/config` is a protected
       path and the sandbox refuses the write. `./publish_github.sh` works around that — it reads the
@@ -367,8 +364,17 @@ label-space finding that became the paper's main line.
       2. Run `./publish_github.sh --push` (or `./publish_github.sh` first for a dry run).
 
       The target is controlled by `GITHUB_OWNER` / `GITHUB_REPO`, defaulting to
-      `HAHA12345677888/breast-cancer-multimodal-transformer`. Publishing under a different owner
-      than the one in the Code availability statements means editing both manuscripts first.
+      `HAHA12345677888/pam50-label-space`, which is what the Code availability statements now name.
+
+      The helper pushes without `--force`. That is deliberate: the target is a fresh repository that
+      only ever receives this history, so a fast-forward push is correct, and `--force-with-lease`
+      cannot be relied on when pushing to a bare URL (there is no remote-tracking ref to compare
+      against). A rejected push is reported and stops rather than overwriting.
+
+      `origin` still points at `git@github.com:HAHA1122344/...`. The helper pushes to the new URL
+      explicitly, so this does not block publishing, but `git push` typed by hand would still go to
+      the old repository. To repoint it, run from your own terminal:
+      `git remote set-url origin https://github.com/HAHA12345677888/pam50-label-space.git`
 - [ ] Zenodo DOI is promised in both code-availability statements but not yet minted; mint it from
       the archived GitHub snapshot after the push above, then edit the two statements separately —
       they no longer read the same. `manuscript.tex` says "A versioned archive with a citable DOI
