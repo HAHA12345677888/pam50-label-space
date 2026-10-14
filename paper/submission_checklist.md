@@ -138,7 +138,7 @@
 
 ## Before Submission
 
-- [x] Compile LaTeX — **DONE on the host**, 41 pages, 0 undefined citations.
+- [x] Compile LaTeX — **DONE on the host**, 0 undefined citations, 0 undefined references.
       The blocker was only ever the platform sandbox. The host has a working TinyTeX
       (TeX Live 2026) at `~/Library/TinyTeX/bin/universal-darwin/`, which is *not* on PATH —
       so a bare `pdflatex` appears missing. Run `cd paper && ./build.sh`; it sets PATH itself
@@ -236,7 +236,11 @@ label-space finding that became the paper's main line.
 
 - [x] `results/route_a/numbers_audit.json` — every numeric claim in the manuscript and
   this checklist recomputed from the result file that contains it and compared at the
-  precision it is quoted. **28 claims, 0 mismatches.** Notable resolutions:
+  precision it is quoted. Read the coverage and result from the file's own fields rather
+  than from this line: `python -c "import json;d=json.load(open('results/route_a/numbers_audit.json'));print(d['n_claims'],'claims,',d['n_mismatches'],'mismatches')"`.
+  The `n_claims` field is bumped by the script whenever a claim is added, so any count
+  written here would go stale; `n_mismatches` is the field that must stay 0.
+  Notable resolutions:
   - The TCGA C-index triple (0.577 / 0.551 / 0.530) lives in `route_a_summary.json`
     under `step5_external_validation.c_index`, not in `tcga_survival.json`, which
     carries only the reproduced linear value plus the time-dependent ones.
@@ -272,16 +276,19 @@ label-space finding that became the paper's main line.
       `pdflatex.fmt`). The **host is fine**: TinyTeX 2026 lives at
       `~/Library/TinyTeX/bin/universal-darwin/` (off PATH, which is why `which pdflatex` fails and
       it looks like LaTeX is missing) with a complete `texmf-dist`. `./build.sh` →
-      `build/manuscript.pdf`, **36 pages, 883,769 bytes, 0 undefined citations/references**
-      at the time of that fix; the current `paper/manuscript.pdf` is the later revision at
-      **41 pages, 885,699 bytes, 16 figures, 13 tables, 0 undefined citations/references**.
+      `build/manuscript.pdf`, **36 pages, 0 undefined citations/references** at the time of
+      that fix. Page, figure and table counts and any byte size are deliberately not quoted
+      here: they change on every rebuild, and a stale size is worse than none. To read the
+      current build's state, ask the file:
+      `python -c "import pypdfium2 as p;d=p.PdfDocument('paper/manuscript.pdf');print(len(d),'pages')"`.
       A second, larger defect surfaced once BibTeX actually ran: **59 of 84 citations never
       resolved**, because the `.bib` keys carried the entry's index suffix while the body text used
       the bare author-year form (`\cite{mao2025a}` vs key `mao2025a21`). Only 24 references reached
       the PDF. Fixed by canonicalising all keys against the citations (see Files -> `references.bib`).
-      Confirmed clean: `manuscript_ieee.tex` builds to **18 pages, 583,568 bytes, 84 references,
-      0 undefined citations, 0 undefined references, 0 LaTeX errors**; the companion
-      `manuscript.tex` builds to 41 pages, 0 undefined citations. tectonic is still not an option
+      Confirmed clean: `manuscript_ieee.tex` builds to **0 undefined citations, 0 undefined
+      references, 0 LaTeX errors**; the companion `manuscript.tex` also builds cleanly. Both
+      draw all 84 entries in `references.bib`. Page counts and byte sizes are not quoted, for
+      the reason given above. tectonic is still not an option
       here — its bundle host `relay.fullyjustified.net` is not on the sandbox allowlist.
 - [x] `figF` caption corrected. It plots 5-year *outcome* among treated METABRIC patients, not
       pCR. The pCR claim now has its own figure (`figI`, from `pcr_gse20194.json`) with a caption
@@ -294,7 +301,7 @@ label-space finding that became the paper's main line.
       reintroduce 0.586.
 - [x] **RESOLVED — two-column IEEEtran manuscript exists.** `paper/manuscript_ieee.tex`
       (`\documentclass[10pt,journal,compsoc,twocolumn]{IEEEtran}`) is a full JBHI-format build:
-      18 pages, 0 undefined citations/references, 0 LaTeX errors. Every `\includegraphics` width was
+      0 undefined citations/references, 0 LaTeX errors. Every `\includegraphics` width was
       re-tuned to the 3.5 in single-column measure via the `\fitcol` helper, and the wide tables were
       scaled with `\AtBeginEnvironment{table}{\small}`. `IEEEtran.cls` + `IEEEtran.bst` are installed
       in `~/Library/TinyTeX/texmf-local/` (not in a repo `texmf/`), so the class resolves out of the box.
