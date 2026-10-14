@@ -359,7 +359,14 @@ label-space finding that became the paper's main line.
       published work covers, at the level of themes rather than commit
       messages: the multimodal external validation and harmonized TCGA cohort, the corrected
       detector scoring and its provenance audit, the submission-checklist updates, the publish
-      helper, the author-list change, and the fixes to the defects found in review.
+      helper, and the fixes to the defects found in review.
+
+      **Check for unpushed work before submitting** (`git status -sb`). At the time the author
+      list was changed, those commits were still local: the author-list change (Suxing Liu,
+      Zhijian Zheng, Jiahao Wang) is deliberately excluded from the published list above,
+      because until it is pushed the repository still serves the earlier single-author block
+      that this manuscript no longer uses. Confirm which state the remote is in rather than
+      trusting this paragraph — it is a state claim and goes stale on the next push.
 
       Note `publish_github.sh` only exists from the commit that added it onward, so a checkout that
       predates that commit will not have the helper.
