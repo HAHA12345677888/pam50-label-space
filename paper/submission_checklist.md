@@ -176,7 +176,7 @@
       `manuscript_ieee.tex` now carry the real affiliation (Faculty of Medicine and Health
       Sciences, Universiti Sains Malaysia, Kubang Kerian, Kelantan) and the corresponding-author
       email in the `\author{}` block and in the Declarations.
-- [ ] Add ORCID (corresponding-author email is now present in both manuscripts)
+- [x] ORCID added in both manuscripts: 0009-0005-9893-4163 (Suxing Liu)
 - [x] **DONE** — both manuscripts point at the real repository
       `github.com/HAHA12345677888/pam50-label-space` (created 2026-10-14, public). The earlier
       `HAHA1122344/breast-cancer-multimodal-transformer` URL is no longer referenced by either
@@ -338,14 +338,17 @@ label-space finding that became the paper's main line.
       in `~/Library/TinyTeX/texmf-local/` (not in a repo `texmf/`), so the class resolves out of the box.
       Note the build must run `pdflatex -> bibtex -> pdflatex -> pdflatex` in that order; `latexmk`
       mis-sequences BibTeX against the freshly-written `.aux` on this TinyTeX install.
-- [x] **RESOLVED — affiliation/author block carries real values in BOTH manuscripts**: Faculty of
-      Medicine and Health Sciences, Universiti Sains Malaysia, Kubang Kerian, Kelantan, Malaysia;
-      corresponding author Shuxing Liu (email in the `\author{}` block). Data-availability
+- [x] **RESOLVED — author block carries the full author list in BOTH manuscripts**, verified by
+      extracting page text from the rebuilt PDFs: Suxing Liu (School of Digital Arts, Jiangxi
+      Arts & Ceramics Technology Institute, Jingdezhen 33001, China; ORCID
+      0009-0005-9893-4163; corresponding author), Zhijian Zheng (University of Alabama,
+      Tuscaloosa, AL, USA), and Jiahao Wang (School of Computing, Universiti Sains Malaysia,
+      11800 USM Penang, Malaysia). The earlier Faculty of Medicine and Health Sciences, USM
+      affiliation was replaced at the author's request. Data-availability
       (cBioPortal/GEO) and code-availability (GitHub; Zenodo DOI still pending) statements are
       present, and the Declarations block now carries real author-contribution, funding,
-      competing-interest and ethics text in both files. The remaining author-side items are ORCID
-      and confirming the funding and competing-interest wording, both tracked under
-      "Before Submission".
+      competing-interest and ethics text in both files. The remaining author-side item is the
+      funding statement.
 
 ## Pre-submission residue
 - [x] **DONE** — the code is pushed and public. The working tree is clean and `main` on

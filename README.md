@@ -185,11 +185,11 @@ Original data: [cBioPortal METABRIC](https://www.cbioportal.org/study/brca_metab
 ## Citation
 
 ```bibtex
-@article{liu2025breast,
-  title={A Unified Multimodal Transformer with Pathway-Guided Attention for Breast Cancer Molecular Subtype Classification and Survival Prediction},
-  author={Liu, Shuxing},
-  journal={arXiv preprint arXiv:XXXX.XXXXX},
-  year={2025}
+@article{liu2026labelspace,
+  title={Label-Space Mismatch Distorts Cross-Cohort Evaluation in Breast Cancer Molecular Subtyping},
+  author={Liu, Suxing and Zheng, Zhijian and Wang, Jiahao},
+  journal={Manuscript in preparation},
+  year={2026}
 }
 ```
 
