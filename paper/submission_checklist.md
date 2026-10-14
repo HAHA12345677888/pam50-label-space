@@ -23,8 +23,9 @@
 
 > **Code-availability gap — must be closed before submission.** The Code availability statement in
 > both manuscripts points at `github.com/HAHA1122344/breast-cancer-multimodal-transformer`, which
-> is public and resolves. But the pushed tip `46b5b95` predates the current work by 10 commits, so
-> a reviewer following that link finds an older and different result set. Confirmed absent from the
+> is public and resolves. But the pushed tip `46b5b95` predates the current work, so a reviewer
+> following that link finds an older and different result set. Compare with
+> `git rev-list --count origin/main..HEAD` rather than a count quoted here. Confirmed absent from the
 > pushed tree: `results/route_a/multimodal_external.json`, `results/route_a/detector_v2.json`,
 > `results/route_a/numbers_audit.json`, `scripts/route_a_step17_detector_v2.py`, and the figure
 > generator for `figJ`. The statement's claim that the repository "contains the analysis scripts,
@@ -368,9 +369,13 @@ label-space finding that became the paper's main line.
       The target is controlled by `GITHUB_OWNER` / `GITHUB_REPO`, defaulting to
       `HAHA12345677888/breast-cancer-multimodal-transformer`. Publishing under a different owner
       than the one in the Code availability statements means editing both manuscripts first.
-- [ ] Zenodo DOI is promised in the code-availability statement but not yet minted; mint it from the
-      archived GitHub snapshot after the push above, then replace the corresponding sentence
-      ("A versioned archive with a citable DOI will be deposited before publication.") with the
-      minted DOI, or soften it if the DOI is still pending at submission. The statement names no
-      commit hash, so no hash inside it needs updating.
+- [ ] Zenodo DOI is promised in both code-availability statements but not yet minted; mint it from
+      the archived GitHub snapshot after the push above, then edit the two statements separately —
+      they no longer read the same. `manuscript.tex` says "A versioned archive with a citable DOI
+      will be deposited before publication."; `manuscript_ieee.tex` says "A versioned snapshot will
+      be archived at Zenodo with a DOI prior to submission". Replace the sentence with the minted
+      DOI in whichever manuscript is submitted, or soften it if the DOI is still pending. Neither
+      statement names a commit hash, so no hash inside them needs updating; the IEEE version's
+      earlier pinned hash `24c3ed9` was removed because it pointed 14 commits behind local HEAD and
+      behind even the stale public tip.
 
