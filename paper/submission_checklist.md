@@ -13,23 +13,33 @@
 > PAM50 genomics paper would be desk-rejected out of scope, without review — this is a scope
 > mismatch, not a quality judgement, and no amount of revision can fix it.
 
-> **Page budget — the main remaining blocker.** JBHI regular papers are 8–12 double-column pages
-> (over-length charges apply beyond 12). Measured at the last build: `manuscript_ieee.pdf` is
-> **19 pages**, carrying 10 figures and 12 tables — roughly **7 pages over** the budget. The
-> single-column `manuscript.tex` carries 16 figures and 13 tables across 41 pages; it is the
-> arXiv/self-archive version, not the submission.
+> **Page budget — verified against JBHI's own author pages, 2026-10-14.** The earlier note here
+> said "8-12 pages"; that was wrong. From
+> `https://www.embs.org/jbhi/prepare-and-submit-your-manuscript/`:
+> **the page limit is 14 pages for regular papers, *including supplementary material*, and it
+> must be met in both the original submission and any revision.** Overlength is not merely
+> expensive, it is out of policy.
+>
+> Charges beyond eight pages are mandatory and non-negotiable: pages 9-10 at \$250 each, page 11
+> and beyond at \$350 each. So 8 pages = \$0, 10 = \$500, 12 = \$1,200, 14 = \$1,900.
+> The same page carries the abstract cap (**250 words** for regular papers) and states that IEEE
+> requires an **ORCID for every author**, not just the corresponding one.
+>
+> Measured at the last build, i.e. the size of the problem:
+> `manuscript_ieee.pdf` **19 pages** + `supplementary_ieee.pdf` **9 pages** = **28 pages against a
+> 14-page cap** — a 14-page cut, and the abstract is **410 words against 250**. The supplement
+> cannot be used as the overflow, because it is counted too; the cut has to come out of the
+> manuscript and the supplement together.
 >
 > The Transformer-investigation material (learning curves, capacity sweep, regularization,
 > pretraining, external-validation reversal) is *already* in the supplement as Section S1, so it
-> is not available as further savings. The trim has to come from the duplication that remains:
-> the modality-ablation figure restates Table 1, and the model-comparison figure restates
-> Table 2, so two figures can go with no information loss; beyond that, lower-value tables
-> (five-class training baselines, paired significance tests, calibration) should move to the
-> supplement rather than be cut.
+> offers no further savings. The genuinely free savings are the two figures that restate tables:
+> the modality-ablation figure duplicates Table 1 and the model-comparison figure duplicates
+> Table 2. Everything past that costs content.
 >
-> Read the current page count off the PDF rather than from this note, since every rebuild
-> changes it:
-> `python -c "import pypdfium2 as p;print(len(p.PdfDocument('paper/manuscript_ieee.pdf')),'pages')"`.
+> Read the live counts off the PDFs rather than from this note, since every rebuild changes them:
+> `python -c "import pypdfium2 as p;[print(f,len(p.PdfDocument(f)),'pages') for f in
+> ('paper/manuscript_ieee.pdf','paper/supplementary/supplementary_ieee.pdf')]"`.
 
 > **Code availability — CLOSED.** Both manuscripts point at
 > `github.com/HAHA12345677888/pam50-label-space`, and that repository is public and populated:
