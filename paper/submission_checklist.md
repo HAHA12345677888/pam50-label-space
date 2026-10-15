@@ -371,12 +371,12 @@ label-space finding that became the paper's main line.
       detector scoring and its provenance audit, the submission-checklist updates, the publish
       helper, and the fixes to the defects found in review.
 
-      **Check for unpushed work before submitting** (`git status -sb`). At the time the author
-      list was changed, those commits were still local: the author-list change (Suxing Liu,
-      Zhijian Zheng, Jiahao Wang) is deliberately excluded from the published list above,
-      because until it is pushed the repository still serves the earlier single-author block
-      that this manuscript no longer uses. Confirm which state the remote is in rather than
-      trusting this paragraph — it is a state claim and goes stale on the next push.
+      **Verify the published state immediately before submitting — do not trust this file.**
+      Use `git ls-remote https://github.com/HAHA12345677888/pam50-label-space.git main` and
+      compare it with `git rev-parse HEAD`. Do **not** use `git status -sb` for this: the local
+      `origin` still points at the old `HAHA1122344` repository, so it reports a misleading
+      ahead/behind count against the wrong remote. This file records no SHA, no file count and
+      no push state, because all three go stale the moment anyone commits.
 
       Note `publish_github.sh` only exists from the commit that added it onward, so a checkout that
       predates that commit will not have the helper.
